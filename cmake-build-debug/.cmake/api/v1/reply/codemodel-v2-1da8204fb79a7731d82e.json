@@ -38,9 +38,9 @@
 			[
 				{
 					"directoryIndex" : 0,
-					"id" : "UserProfile.cpp::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-UserProfile.cpp-Debug-4c3d84daa2dfdc5f0998.json",
-					"name" : "UserProfile.cpp",
+					"id" : "UserProfile::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-UserProfile-Debug-9a4290500c833c9558a1.json",
+					"name" : "UserProfile",
 					"projectIndex" : 0
 				}
 			]
