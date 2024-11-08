@@ -3,4 +3,4 @@ project(AI_Fitness_Tracker)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable()
+add_executable(UserProfile UserProfile.cpp)
