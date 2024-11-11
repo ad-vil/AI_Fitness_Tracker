@@ -116,6 +116,32 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named AIEngine
+
+# Build rule for target.
+AIEngine: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 AIEngine
+.PHONY : AIEngine
+
+# fast build rule for target.
+AIEngine/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\AIEngine.dir\build.make CMakeFiles/AIEngine.dir/build
+.PHONY : AIEngine/fast
+
+#=============================================================================
+# Target rules for targets named APIClient
+
+# Build rule for target.
+APIClient: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 APIClient
+.PHONY : APIClient
+
+# fast build rule for target.
+APIClient/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\APIClient.dir\build.make CMakeFiles/APIClient.dir/build
+.PHONY : APIClient/fast
+
+#=============================================================================
 # Target rules for targets named UserProfile
 
 # Build rule for target.
@@ -127,6 +153,104 @@ UserProfile: cmake_check_build_system
 UserProfile/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\UserProfile.dir\build.make CMakeFiles/UserProfile.dir/build
 .PHONY : UserProfile/fast
+
+#=============================================================================
+# Target rules for targets named Workout
+
+# Build rule for target.
+Workout: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 Workout
+.PHONY : Workout
+
+# fast build rule for target.
+Workout/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Workout.dir\build.make CMakeFiles/Workout.dir/build
+.PHONY : Workout/fast
+
+#=============================================================================
+# Target rules for targets named GUI
+
+# Build rule for target.
+GUI: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 GUI
+.PHONY : GUI
+
+# fast build rule for target.
+GUI/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\GUI.dir\build.make CMakeFiles/GUI.dir/build
+.PHONY : GUI/fast
+
+AIEngine.obj: AIEngine.cpp.obj
+.PHONY : AIEngine.obj
+
+# target to build an object file
+AIEngine.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\AIEngine.dir\build.make CMakeFiles/AIEngine.dir/AIEngine.cpp.obj
+.PHONY : AIEngine.cpp.obj
+
+AIEngine.i: AIEngine.cpp.i
+.PHONY : AIEngine.i
+
+# target to preprocess a source file
+AIEngine.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\AIEngine.dir\build.make CMakeFiles/AIEngine.dir/AIEngine.cpp.i
+.PHONY : AIEngine.cpp.i
+
+AIEngine.s: AIEngine.cpp.s
+.PHONY : AIEngine.s
+
+# target to generate assembly for a file
+AIEngine.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\AIEngine.dir\build.make CMakeFiles/AIEngine.dir/AIEngine.cpp.s
+.PHONY : AIEngine.cpp.s
+
+APIClient.obj: APIClient.cpp.obj
+.PHONY : APIClient.obj
+
+# target to build an object file
+APIClient.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\APIClient.dir\build.make CMakeFiles/APIClient.dir/APIClient.cpp.obj
+.PHONY : APIClient.cpp.obj
+
+APIClient.i: APIClient.cpp.i
+.PHONY : APIClient.i
+
+# target to preprocess a source file
+APIClient.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\APIClient.dir\build.make CMakeFiles/APIClient.dir/APIClient.cpp.i
+.PHONY : APIClient.cpp.i
+
+APIClient.s: APIClient.cpp.s
+.PHONY : APIClient.s
+
+# target to generate assembly for a file
+APIClient.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\APIClient.dir\build.make CMakeFiles/APIClient.dir/APIClient.cpp.s
+.PHONY : APIClient.cpp.s
+
+GUI.obj: GUI.cpp.obj
+.PHONY : GUI.obj
+
+# target to build an object file
+GUI.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\GUI.dir\build.make CMakeFiles/GUI.dir/GUI.cpp.obj
+.PHONY : GUI.cpp.obj
+
+GUI.i: GUI.cpp.i
+.PHONY : GUI.i
+
+# target to preprocess a source file
+GUI.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\GUI.dir\build.make CMakeFiles/GUI.dir/GUI.cpp.i
+.PHONY : GUI.cpp.i
+
+GUI.s: GUI.cpp.s
+.PHONY : GUI.s
+
+# target to generate assembly for a file
+GUI.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\GUI.dir\build.make CMakeFiles/GUI.dir/GUI.cpp.s
+.PHONY : GUI.cpp.s
 
 UserProfile.obj: UserProfile.cpp.obj
 .PHONY : UserProfile.obj
@@ -152,6 +276,30 @@ UserProfile.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\UserProfile.dir\build.make CMakeFiles/UserProfile.dir/UserProfile.cpp.s
 .PHONY : UserProfile.cpp.s
 
+Workout.obj: Workout.cpp.obj
+.PHONY : Workout.obj
+
+# target to build an object file
+Workout.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Workout.dir\build.make CMakeFiles/Workout.dir/Workout.cpp.obj
+.PHONY : Workout.cpp.obj
+
+Workout.i: Workout.cpp.i
+.PHONY : Workout.i
+
+# target to preprocess a source file
+Workout.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Workout.dir\build.make CMakeFiles/Workout.dir/Workout.cpp.i
+.PHONY : Workout.cpp.i
+
+Workout.s: Workout.cpp.s
+.PHONY : Workout.s
+
+# target to generate assembly for a file
+Workout.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Workout.dir\build.make CMakeFiles/Workout.dir/Workout.cpp.s
+.PHONY : Workout.cpp.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -160,10 +308,26 @@ help:
 	@echo ... depend
 	@echo ... edit_cache
 	@echo ... rebuild_cache
+	@echo ... AIEngine
+	@echo ... APIClient
+	@echo ... GUI
 	@echo ... UserProfile
+	@echo ... Workout
+	@echo ... AIEngine.obj
+	@echo ... AIEngine.i
+	@echo ... AIEngine.s
+	@echo ... APIClient.obj
+	@echo ... APIClient.i
+	@echo ... APIClient.s
+	@echo ... GUI.obj
+	@echo ... GUI.i
+	@echo ... GUI.s
 	@echo ... UserProfile.obj
 	@echo ... UserProfile.i
 	@echo ... UserProfile.s
+	@echo ... Workout.obj
+	@echo ... Workout.i
+	@echo ... Workout.s
 .PHONY : help
 
 

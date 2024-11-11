@@ -1,3 +1,7 @@
+C:/Users/adil_/CLionProjects/AI_Fitness_Tracker/cmake-build-debug/CMakeFiles/AIEngine.dir
+C:/Users/adil_/CLionProjects/AI_Fitness_Tracker/cmake-build-debug/CMakeFiles/APIClient.dir
 C:/Users/adil_/CLionProjects/AI_Fitness_Tracker/cmake-build-debug/CMakeFiles/UserProfile.dir
+C:/Users/adil_/CLionProjects/AI_Fitness_Tracker/cmake-build-debug/CMakeFiles/Workout.dir
+C:/Users/adil_/CLionProjects/AI_Fitness_Tracker/cmake-build-debug/CMakeFiles/GUI.dir
 C:/Users/adil_/CLionProjects/AI_Fitness_Tracker/cmake-build-debug/CMakeFiles/edit_cache.dir
 C:/Users/adil_/CLionProjects/AI_Fitness_Tracker/cmake-build-debug/CMakeFiles/rebuild_cache.dir
