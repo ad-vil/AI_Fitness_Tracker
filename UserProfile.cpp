@@ -3,3 +3,7 @@
 //
 
 #include "UserProfile.h"
+
+int main() {
+
+}
