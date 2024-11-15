@@ -62,11 +62,7 @@ CMAKE_BINARY_DIR = C:\Users\adil_\CLionProjects\AI_Fitness_Tracker\cmake-build-d
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/AIEngine.dir/all
-all: CMakeFiles/APIClient.dir/all
-all: CMakeFiles/UserProfile.dir/all
-all: CMakeFiles/Workout.dir/all
-all: CMakeFiles/GUI.dir/all
+all: CMakeFiles/Main.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -74,142 +70,34 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/AIEngine.dir/clean
-clean: CMakeFiles/APIClient.dir/clean
-clean: CMakeFiles/UserProfile.dir/clean
-clean: CMakeFiles/Workout.dir/clean
-clean: CMakeFiles/GUI.dir/clean
+clean: CMakeFiles/Main.dir/clean
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/AIEngine.dir
+# Target rules for target CMakeFiles/Main.dir
 
 # All Build rule for target.
-CMakeFiles/AIEngine.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\AIEngine.dir\build.make CMakeFiles/AIEngine.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\AIEngine.dir\build.make CMakeFiles/AIEngine.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\adil_\CLionProjects\AI_Fitness_Tracker\cmake-build-debug\CMakeFiles --progress-num=1,2 "Built target AIEngine"
-.PHONY : CMakeFiles/AIEngine.dir/all
+CMakeFiles/Main.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\adil_\CLionProjects\AI_Fitness_Tracker\cmake-build-debug\CMakeFiles --progress-num=1,2,3,4,5,6 "Built target Main"
+.PHONY : CMakeFiles/Main.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/AIEngine.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\adil_\CLionProjects\AI_Fitness_Tracker\cmake-build-debug\CMakeFiles 2
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/AIEngine.dir/all
+CMakeFiles/Main.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\adil_\CLionProjects\AI_Fitness_Tracker\cmake-build-debug\CMakeFiles 6
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/Main.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\adil_\CLionProjects\AI_Fitness_Tracker\cmake-build-debug\CMakeFiles 0
-.PHONY : CMakeFiles/AIEngine.dir/rule
+.PHONY : CMakeFiles/Main.dir/rule
 
 # Convenience name for target.
-AIEngine: CMakeFiles/AIEngine.dir/rule
-.PHONY : AIEngine
+Main: CMakeFiles/Main.dir/rule
+.PHONY : Main
 
 # clean rule for target.
-CMakeFiles/AIEngine.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\AIEngine.dir\build.make CMakeFiles/AIEngine.dir/clean
-.PHONY : CMakeFiles/AIEngine.dir/clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/APIClient.dir
-
-# All Build rule for target.
-CMakeFiles/APIClient.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\APIClient.dir\build.make CMakeFiles/APIClient.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\APIClient.dir\build.make CMakeFiles/APIClient.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\adil_\CLionProjects\AI_Fitness_Tracker\cmake-build-debug\CMakeFiles --progress-num=3,4 "Built target APIClient"
-.PHONY : CMakeFiles/APIClient.dir/all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/APIClient.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\adil_\CLionProjects\AI_Fitness_Tracker\cmake-build-debug\CMakeFiles 2
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/APIClient.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\adil_\CLionProjects\AI_Fitness_Tracker\cmake-build-debug\CMakeFiles 0
-.PHONY : CMakeFiles/APIClient.dir/rule
-
-# Convenience name for target.
-APIClient: CMakeFiles/APIClient.dir/rule
-.PHONY : APIClient
-
-# clean rule for target.
-CMakeFiles/APIClient.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\APIClient.dir\build.make CMakeFiles/APIClient.dir/clean
-.PHONY : CMakeFiles/APIClient.dir/clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/UserProfile.dir
-
-# All Build rule for target.
-CMakeFiles/UserProfile.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\UserProfile.dir\build.make CMakeFiles/UserProfile.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\UserProfile.dir\build.make CMakeFiles/UserProfile.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\adil_\CLionProjects\AI_Fitness_Tracker\cmake-build-debug\CMakeFiles --progress-num=7,8 "Built target UserProfile"
-.PHONY : CMakeFiles/UserProfile.dir/all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/UserProfile.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\adil_\CLionProjects\AI_Fitness_Tracker\cmake-build-debug\CMakeFiles 2
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/UserProfile.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\adil_\CLionProjects\AI_Fitness_Tracker\cmake-build-debug\CMakeFiles 0
-.PHONY : CMakeFiles/UserProfile.dir/rule
-
-# Convenience name for target.
-UserProfile: CMakeFiles/UserProfile.dir/rule
-.PHONY : UserProfile
-
-# clean rule for target.
-CMakeFiles/UserProfile.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\UserProfile.dir\build.make CMakeFiles/UserProfile.dir/clean
-.PHONY : CMakeFiles/UserProfile.dir/clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/Workout.dir
-
-# All Build rule for target.
-CMakeFiles/Workout.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Workout.dir\build.make CMakeFiles/Workout.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Workout.dir\build.make CMakeFiles/Workout.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\adil_\CLionProjects\AI_Fitness_Tracker\cmake-build-debug\CMakeFiles --progress-num=9,10 "Built target Workout"
-.PHONY : CMakeFiles/Workout.dir/all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/Workout.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\adil_\CLionProjects\AI_Fitness_Tracker\cmake-build-debug\CMakeFiles 2
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/Workout.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\adil_\CLionProjects\AI_Fitness_Tracker\cmake-build-debug\CMakeFiles 0
-.PHONY : CMakeFiles/Workout.dir/rule
-
-# Convenience name for target.
-Workout: CMakeFiles/Workout.dir/rule
-.PHONY : Workout
-
-# clean rule for target.
-CMakeFiles/Workout.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Workout.dir\build.make CMakeFiles/Workout.dir/clean
-.PHONY : CMakeFiles/Workout.dir/clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/GUI.dir
-
-# All Build rule for target.
-CMakeFiles/GUI.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\GUI.dir\build.make CMakeFiles/GUI.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\GUI.dir\build.make CMakeFiles/GUI.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\adil_\CLionProjects\AI_Fitness_Tracker\cmake-build-debug\CMakeFiles --progress-num=5,6 "Built target GUI"
-.PHONY : CMakeFiles/GUI.dir/all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/GUI.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\adil_\CLionProjects\AI_Fitness_Tracker\cmake-build-debug\CMakeFiles 2
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/GUI.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\adil_\CLionProjects\AI_Fitness_Tracker\cmake-build-debug\CMakeFiles 0
-.PHONY : CMakeFiles/GUI.dir/rule
-
-# Convenience name for target.
-GUI: CMakeFiles/GUI.dir/rule
-.PHONY : GUI
-
-# clean rule for target.
-CMakeFiles/GUI.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\GUI.dir\build.make CMakeFiles/GUI.dir/clean
-.PHONY : CMakeFiles/GUI.dir/clean
+CMakeFiles/Main.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/clean
+.PHONY : CMakeFiles/Main.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

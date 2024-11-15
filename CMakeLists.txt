@@ -3,8 +3,5 @@ project(AI_Fitness_Tracker)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(AIEngine AIEngine.cpp)
-add_executable(APIClient APIClient.cpp)
-add_executable(UserProfile UserProfile.cpp)
-add_executable(Workout Workout.cpp)
-add_executable(GUI GUI.cpp)
+
+add_executable(Main main.cpp UserProfile.cpp Workout.cpp CardioWorkout.cpp NormalWorkout.cpp)

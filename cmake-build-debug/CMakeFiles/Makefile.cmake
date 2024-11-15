@@ -49,9 +49,5 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
-  "CMakeFiles/AIEngine.dir/DependInfo.cmake"
-  "CMakeFiles/APIClient.dir/DependInfo.cmake"
-  "CMakeFiles/UserProfile.dir/DependInfo.cmake"
-  "CMakeFiles/Workout.dir/DependInfo.cmake"
-  "CMakeFiles/GUI.dir/DependInfo.cmake"
+  "CMakeFiles/Main.dir/DependInfo.cmake"
   )

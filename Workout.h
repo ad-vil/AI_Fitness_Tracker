@@ -1,7 +1,6 @@
 //
 // Created by adil_ on 11/11/2024.
 //
-
 #ifndef WORKOUT_H
 #define WORKOUT_H
 
@@ -10,21 +9,21 @@
 
 using namespace std;
 
-// base class for workouts, holding common workout attributes like date, duration, and calories burned
+// base workout class
 class Workout {
 protected:
     string date;
-    int duration;  // duration in minutes
+    int duration;  // in minutes
     int caloriesBurned;
 
 public:
-    // constructor: initializes workout with date, duration, and calories burned
+    // constructor to set up date, duration, and calories
     Workout(const string& date, int duration, int caloriesBurned);
 
-    // displays details of the workout (pure virtual function for polymorphism)
+    // virtual method for displaying the workout, to be defined by derived classes
     virtual void displayWorkout() const = 0;
 
-    // virtual destructor
+    // destructor
     virtual ~Workout() {}
 };
 

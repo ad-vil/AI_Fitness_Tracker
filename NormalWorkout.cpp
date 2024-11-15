@@ -4,11 +4,11 @@
 
 #include "NormalWorkout.h"
 
-// init normal workout attributes
+// initialize normal workout attributes
 NormalWorkout::NormalWorkout(const string& date, int duration, int caloriesBurned, const string& exerciseType, int sets, int reps)
     : Workout(date, duration, caloriesBurned), exerciseType(exerciseType), sets(sets), reps(reps) {}
 
-// display strength workout details
+// display strength workout info
 void NormalWorkout::displayWorkout() const {
     cout << "strength workout on " << date << endl;
     cout << "duration: " << duration << " minutes" << endl;

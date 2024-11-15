@@ -7,7 +7,7 @@
 
 #include "Workout.h"
 
-// derived class for strength workouts
+// class for normal/strength workouts
 class NormalWorkout : public Workout {
 private:
     string exerciseType;  // type of exercise
@@ -15,10 +15,10 @@ private:
     int reps;
 
 public:
-    // constructor
+    // set up normal workout with date, duration, calories, type, sets, reps
     NormalWorkout(const string& date, int duration, int caloriesBurned, const string& exerciseType, int sets, int reps);
 
-    // display details of the strength workout in console
+    // show strength workout info
     void displayWorkout() const override;
 };
 

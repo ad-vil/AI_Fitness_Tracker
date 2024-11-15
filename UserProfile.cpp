@@ -4,7 +4,7 @@
 
 #include "UserProfile.h"
 
-// constructor init user profile attributes
+// initalize user profile with attributes
 UserProfile::UserProfile(const string& name, int age, double weight, double height, const string& goal, const string& gender)
     : name(name), age(age), weight(weight), height(height), goal(goal), gender(gender) {}
 

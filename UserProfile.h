@@ -17,11 +17,11 @@ private:
     int age;
     double weight;  // in lbs
     double height;  // in inches
-    string goal;  // e.g., "weight loss" or "muscle gain"
+    string goal;  // like weight loss or muscle gain
     string gender;
 
 public:
-    // init user profile
+    // initalize user profile
     UserProfile(const string& name, int age, double weight, double height, const string& goal, const string& gender);
 
     // updates user profile with new weight and height

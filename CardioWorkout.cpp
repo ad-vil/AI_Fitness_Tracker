@@ -1,14 +1,14 @@
 //
-// Created by adil_ on 11/15/2024.
+// Created by adil_ on 11/14/2024.
 //
 
 #include "CardioWorkout.h"
 
-// init cardio workout attributes
+// initialize cardio workout details
 CardioWorkout::CardioWorkout(const string& date, int duration, int caloriesBurned, double distance)
     : Workout(date, duration, caloriesBurned), distance(distance) {}
 
-// display cardio workout details
+// display cardio workout info
 void CardioWorkout::displayWorkout() const {
     cout << "cardio workout on " << date << endl;
     cout << "duration: " << duration << " minutes" << endl;
