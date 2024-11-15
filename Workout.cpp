@@ -3,3 +3,7 @@
 //
 
 #include "Workout.h"
+
+// constructor initializes workout attributes
+Workout::Workout(const string& date, int duration, int caloriesBurned)
+    : date(date), duration(duration), caloriesBurned(caloriesBurned) {}

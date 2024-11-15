@@ -8,13 +8,13 @@
 UserProfile::UserProfile(const string& name, int age, double weight, double height, const string& goal, const string& gender)
     : name(name), age(age), weight(weight), height(height), goal(goal), gender(gender) {}
 
-// updates height and weight in user profile
+// update weight and height in user profile
 void UserProfile::updateProfile(double newWeight, double newHeight) {
     weight = newWeight;
     height = newHeight;
 }
 
-// displays profile details
+// displays profile
 void UserProfile::displayProfile() const {
     cout << "name: " << name << endl;
     cout << "age: " << age << endl;

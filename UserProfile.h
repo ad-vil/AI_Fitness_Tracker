@@ -10,23 +10,24 @@
 
 using namespace std;
 
+// manages user data
 class UserProfile {
 private:
     string name;
     int age;
-    double weight; // in lbs
-    double height; // in inches
-    string goal; // e.g., "weight loss" or "muscle gain"
+    double weight;  // in lbs
+    double height;  // in inches
+    string goal;  // e.g., "weight loss" or "muscle gain"
     string gender;
 
 public:
-    // constructor
-    UserProfile(const string &name, int age, double weight, double height, const string &goal, const string &gender);
+    // init user profile
+    UserProfile(const string& name, int age, double weight, double height, const string& goal, const string& gender);
 
     // updates user profile with new weight and height
     void updateProfile(double newWeight, double newHeight);
 
-    // displays user profile details
+    // display user profile details
     void displayProfile() const;
 };
 
