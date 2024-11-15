@@ -7,7 +7,7 @@
 
 #include "Workout.h"
 
-// class for normal/strength workouts
+// class for normal/strength workoutsss
 class NormalWorkout : public Workout {
 private:
     string exerciseType;  // type of exercise
