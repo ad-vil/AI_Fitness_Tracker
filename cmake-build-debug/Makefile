@@ -226,6 +226,30 @@ FitnessTracker_autogen/mocs_compilation.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\FitnessTracker.dir\build.make CMakeFiles/FitnessTracker.dir/FitnessTracker_autogen/mocs_compilation.cpp.s
 .PHONY : FitnessTracker_autogen/mocs_compilation.cpp.s
 
+NormalWorkout.obj: NormalWorkout.cpp.obj
+.PHONY : NormalWorkout.obj
+
+# target to build an object file
+NormalWorkout.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\FitnessTracker.dir\build.make CMakeFiles/FitnessTracker.dir/NormalWorkout.cpp.obj
+.PHONY : NormalWorkout.cpp.obj
+
+NormalWorkout.i: NormalWorkout.cpp.i
+.PHONY : NormalWorkout.i
+
+# target to preprocess a source file
+NormalWorkout.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\FitnessTracker.dir\build.make CMakeFiles/FitnessTracker.dir/NormalWorkout.cpp.i
+.PHONY : NormalWorkout.cpp.i
+
+NormalWorkout.s: NormalWorkout.cpp.s
+.PHONY : NormalWorkout.s
+
+# target to generate assembly for a file
+NormalWorkout.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\FitnessTracker.dir\build.make CMakeFiles/FitnessTracker.dir/NormalWorkout.cpp.s
+.PHONY : NormalWorkout.cpp.s
+
 UserProfile.obj: UserProfile.cpp.obj
 .PHONY : UserProfile.obj
 
@@ -249,6 +273,54 @@ UserProfile.s: UserProfile.cpp.s
 UserProfile.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\FitnessTracker.dir\build.make CMakeFiles/FitnessTracker.dir/UserProfile.cpp.s
 .PHONY : UserProfile.cpp.s
+
+Workout.obj: Workout.cpp.obj
+.PHONY : Workout.obj
+
+# target to build an object file
+Workout.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\FitnessTracker.dir\build.make CMakeFiles/FitnessTracker.dir/Workout.cpp.obj
+.PHONY : Workout.cpp.obj
+
+Workout.i: Workout.cpp.i
+.PHONY : Workout.i
+
+# target to preprocess a source file
+Workout.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\FitnessTracker.dir\build.make CMakeFiles/FitnessTracker.dir/Workout.cpp.i
+.PHONY : Workout.cpp.i
+
+Workout.s: Workout.cpp.s
+.PHONY : Workout.s
+
+# target to generate assembly for a file
+Workout.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\FitnessTracker.dir\build.make CMakeFiles/FitnessTracker.dir/Workout.cpp.s
+.PHONY : Workout.cpp.s
+
+WorkoutGUI.obj: WorkoutGUI.cpp.obj
+.PHONY : WorkoutGUI.obj
+
+# target to build an object file
+WorkoutGUI.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\FitnessTracker.dir\build.make CMakeFiles/FitnessTracker.dir/WorkoutGUI.cpp.obj
+.PHONY : WorkoutGUI.cpp.obj
+
+WorkoutGUI.i: WorkoutGUI.cpp.i
+.PHONY : WorkoutGUI.i
+
+# target to preprocess a source file
+WorkoutGUI.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\FitnessTracker.dir\build.make CMakeFiles/FitnessTracker.dir/WorkoutGUI.cpp.i
+.PHONY : WorkoutGUI.cpp.i
+
+WorkoutGUI.s: WorkoutGUI.cpp.s
+.PHONY : WorkoutGUI.s
+
+# target to generate assembly for a file
+WorkoutGUI.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\FitnessTracker.dir\build.make CMakeFiles/FitnessTracker.dir/WorkoutGUI.cpp.s
+.PHONY : WorkoutGUI.cpp.s
 
 main.obj: main.cpp.obj
 .PHONY : main.obj
@@ -294,9 +366,18 @@ help:
 	@echo ... FitnessTracker_autogen/mocs_compilation.obj
 	@echo ... FitnessTracker_autogen/mocs_compilation.i
 	@echo ... FitnessTracker_autogen/mocs_compilation.s
+	@echo ... NormalWorkout.obj
+	@echo ... NormalWorkout.i
+	@echo ... NormalWorkout.s
 	@echo ... UserProfile.obj
 	@echo ... UserProfile.i
 	@echo ... UserProfile.s
+	@echo ... Workout.obj
+	@echo ... Workout.i
+	@echo ... Workout.s
+	@echo ... WorkoutGUI.obj
+	@echo ... WorkoutGUI.i
+	@echo ... WorkoutGUI.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

@@ -27,7 +27,7 @@ FitnessTrackerGUI::FitnessTrackerGUI(QWidget *parent) : QWidget(parent) {
 
     // Connect signals to slots
     connect(updateProfileButton, &QPushButton::clicked, this, &FitnessTrackerGUI::updateProfile);
-    connect(logWorkoutButton, &QPushButton::clicked, this, &FitnessTrackerGUI::logCardioWorkout);
+    connect(logWorkoutButton, &QPushButton::clicked, this, &FitnessTrackerGUI::logWorkout);
 }
 
 void FitnessTrackerGUI::updateProfile() {
@@ -35,8 +35,8 @@ void FitnessTrackerGUI::updateProfile() {
     profileLabel->setText("Profile: " + name);
 }
 
-void FitnessTrackerGUI::logCardioWorkout() {
-    // Simulate logging a workout
-    profileLabel->setText(profileLabel->text() + " | Workout Logged");
+void FitnessTrackerGUI::logWorkout() {
+    // Create and show the workout GUI
+    WorkoutGUI workoutGui(this);
+    workoutGui.exec(); // Show the workout GUI as a modal dialog
 }
-

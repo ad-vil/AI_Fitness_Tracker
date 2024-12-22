@@ -38,7 +38,7 @@ set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTORCC ON)
 
 # Create the executable
-add_executable(FitnessTracker main.cpp UserProfile.cpp Workout.cpp CardioWorkout.cpp NormalWorkout.cpp FitnessTrackerGUI.cpp)
+add_executable(FitnessTracker main.cpp UserProfile.cpp Workout.cpp CardioWorkout.cpp NormalWorkout.cpp FitnessTrackerGUI.cpp WorkoutGUI.cpp)
 
 # Link Qt libraries
 target_link_libraries(FitnessTracker Qt6::Core Qt6::Gui Qt6::Widgets)
