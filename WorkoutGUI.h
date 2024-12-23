@@ -20,14 +20,16 @@ public:
     ~WorkoutGUI();
 
     private slots:
-        void handleWorkoutTypeChange(const QString &type);
-    void handleSubmit();
+        void handleWorkoutTypeChange(const QString &type); // Changes UI based on workout type
+    void logCardioWorkout();                          // Handles cardio workout submission
+    void logNormalWorkout();                          // Handles normal workout submission
 
 private:
     QComboBox *workoutTypeDropdown;
     QLineEdit *setsInput;
     QLineEdit *repsInput;
     QLineEdit *distanceInput;
+    QLabel *feedbackLabel;
     QVBoxLayout *mainLayout;
     QPushButton *submitButton;
 };

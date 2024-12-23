@@ -11,15 +11,18 @@ WorkoutGUI::WorkoutGUI(QWidget *parent) : QDialog(parent) {
     workoutTypeDropdown->addItem("Normal Workout");
     workoutTypeDropdown->addItem("Cardio Workout");
 
-    // Input fields
+    // Input fields for Normal Workout
     setsInput = new QLineEdit(this);
+    setsInput->setPlaceholderText("Enter number of sets");
     repsInput = new QLineEdit(this);
-    distanceInput = new QLineEdit(this);
+    repsInput->setPlaceholderText("Enter number of reps");
 
-    // Labels for the input fields
-    QLabel *setsLabel = new QLabel("Sets:");
-    QLabel *repsLabel = new QLabel("Reps:");
-    QLabel *distanceLabel = new QLabel("Distance:");
+    // Input field for Cardio Workout
+    distanceInput = new QLineEdit(this);
+    distanceInput->setPlaceholderText("Enter distance (e.g., km or miles)");
+
+    // Feedback label
+    feedbackLabel = new QLabel(this);
 
     // Submit button
     submitButton = new QPushButton("Submit", this);
@@ -28,23 +31,30 @@ WorkoutGUI::WorkoutGUI(QWidget *parent) : QDialog(parent) {
     mainLayout = new QVBoxLayout(this);
     mainLayout->addWidget(new QLabel("Workout Type:"));
     mainLayout->addWidget(workoutTypeDropdown);
-    mainLayout->addWidget(setsLabel);
+    mainLayout->addWidget(new QLabel("Sets:"));
     mainLayout->addWidget(setsInput);
-    mainLayout->addWidget(repsLabel);
+    mainLayout->addWidget(new QLabel("Reps:"));
     mainLayout->addWidget(repsInput);
-    mainLayout->addWidget(distanceLabel);
+    mainLayout->addWidget(new QLabel("Distance:"));
     mainLayout->addWidget(distanceInput);
     mainLayout->addWidget(submitButton);
+    mainLayout->addWidget(feedbackLabel);
 
     setLayout(mainLayout);
 
     // Initially hide cardio-specific fields
-    distanceLabel->hide();
     distanceInput->hide();
 
     // Connect signals and slots
     connect(workoutTypeDropdown, &QComboBox::currentTextChanged, this, &WorkoutGUI::handleWorkoutTypeChange);
-    connect(submitButton, &QPushButton::clicked, this, &WorkoutGUI::handleSubmit);
+    connect(submitButton, &QPushButton::clicked, [this]() {
+        QString type = workoutTypeDropdown->currentText();
+        if (type == "Normal Workout") {
+            logNormalWorkout();
+        } else if (type == "Cardio Workout") {
+            logCardioWorkout();
+        }
+    });
 }
 
 WorkoutGUI::~WorkoutGUI() = default;
@@ -61,17 +71,24 @@ void WorkoutGUI::handleWorkoutTypeChange(const QString &type) {
     }
 }
 
-void WorkoutGUI::handleSubmit() {
-    QString type = workoutTypeDropdown->currentText();
-    QString details;
-
-    if (type == "Normal Workout") {
-        details = QString("Sets: %1, Reps: %2")
-                      .arg(setsInput->text())
-                      .arg(repsInput->text());
-    } else if (type == "Cardio Workout") {
-        details = QString("Distance: %1").arg(distanceInput->text());
+void WorkoutGUI::logCardioWorkout() {
+    QString distance = distanceInput->text();
+    if (distance.isEmpty()) {
+        QMessageBox::warning(this, "Input Error", "Please enter the distance for the cardio workout.");
+        return;
     }
 
-    QMessageBox::information(this, "Workout Logged", QString("Type: %1\n%2").arg(type, details));
+    feedbackLabel->setText("Logged Cardio Workout: Distance = " + distance);
+}
+
+void WorkoutGUI::logNormalWorkout() {
+    QString sets = setsInput->text();
+    QString reps = repsInput->text();
+
+    if (sets.isEmpty() || reps.isEmpty()) {
+        QMessageBox::warning(this, "Input Error", "Please fill in both sets and reps for the normal workout.");
+        return;
+    }
+
+    feedbackLabel->setText("Logged Normal Workout: Sets = " + sets + ", Reps = " + reps);
 }
