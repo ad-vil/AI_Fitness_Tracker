@@ -154,6 +154,54 @@ FitnessTracker_autogen/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\FitnessTracker_autogen.dir\build.make CMakeFiles/FitnessTracker_autogen.dir/build
 .PHONY : FitnessTracker_autogen/fast
 
+AIEngine.obj: AIEngine.cpp.obj
+.PHONY : AIEngine.obj
+
+# target to build an object file
+AIEngine.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\FitnessTracker.dir\build.make CMakeFiles/FitnessTracker.dir/AIEngine.cpp.obj
+.PHONY : AIEngine.cpp.obj
+
+AIEngine.i: AIEngine.cpp.i
+.PHONY : AIEngine.i
+
+# target to preprocess a source file
+AIEngine.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\FitnessTracker.dir\build.make CMakeFiles/FitnessTracker.dir/AIEngine.cpp.i
+.PHONY : AIEngine.cpp.i
+
+AIEngine.s: AIEngine.cpp.s
+.PHONY : AIEngine.s
+
+# target to generate assembly for a file
+AIEngine.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\FitnessTracker.dir\build.make CMakeFiles/FitnessTracker.dir/AIEngine.cpp.s
+.PHONY : AIEngine.cpp.s
+
+AIRecommendationsGUI.obj: AIRecommendationsGUI.cpp.obj
+.PHONY : AIRecommendationsGUI.obj
+
+# target to build an object file
+AIRecommendationsGUI.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\FitnessTracker.dir\build.make CMakeFiles/FitnessTracker.dir/AIRecommendationsGUI.cpp.obj
+.PHONY : AIRecommendationsGUI.cpp.obj
+
+AIRecommendationsGUI.i: AIRecommendationsGUI.cpp.i
+.PHONY : AIRecommendationsGUI.i
+
+# target to preprocess a source file
+AIRecommendationsGUI.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\FitnessTracker.dir\build.make CMakeFiles/FitnessTracker.dir/AIRecommendationsGUI.cpp.i
+.PHONY : AIRecommendationsGUI.cpp.i
+
+AIRecommendationsGUI.s: AIRecommendationsGUI.cpp.s
+.PHONY : AIRecommendationsGUI.s
+
+# target to generate assembly for a file
+AIRecommendationsGUI.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\FitnessTracker.dir\build.make CMakeFiles/FitnessTracker.dir/AIRecommendationsGUI.cpp.s
+.PHONY : AIRecommendationsGUI.cpp.s
+
 CardioWorkout.obj: CardioWorkout.cpp.obj
 .PHONY : CardioWorkout.obj
 
@@ -274,6 +322,30 @@ UserProfile.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\FitnessTracker.dir\build.make CMakeFiles/FitnessTracker.dir/UserProfile.cpp.s
 .PHONY : UserProfile.cpp.s
 
+UserProfileGUI.obj: UserProfileGUI.cpp.obj
+.PHONY : UserProfileGUI.obj
+
+# target to build an object file
+UserProfileGUI.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\FitnessTracker.dir\build.make CMakeFiles/FitnessTracker.dir/UserProfileGUI.cpp.obj
+.PHONY : UserProfileGUI.cpp.obj
+
+UserProfileGUI.i: UserProfileGUI.cpp.i
+.PHONY : UserProfileGUI.i
+
+# target to preprocess a source file
+UserProfileGUI.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\FitnessTracker.dir\build.make CMakeFiles/FitnessTracker.dir/UserProfileGUI.cpp.i
+.PHONY : UserProfileGUI.cpp.i
+
+UserProfileGUI.s: UserProfileGUI.cpp.s
+.PHONY : UserProfileGUI.s
+
+# target to generate assembly for a file
+UserProfileGUI.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\FitnessTracker.dir\build.make CMakeFiles/FitnessTracker.dir/UserProfileGUI.cpp.s
+.PHONY : UserProfileGUI.cpp.s
+
 Workout.obj: Workout.cpp.obj
 .PHONY : Workout.obj
 
@@ -357,6 +429,12 @@ help:
 	@echo ... FitnessTracker_autogen
 	@echo ... FitnessTracker_autogen_timestamp_deps
 	@echo ... FitnessTracker
+	@echo ... AIEngine.obj
+	@echo ... AIEngine.i
+	@echo ... AIEngine.s
+	@echo ... AIRecommendationsGUI.obj
+	@echo ... AIRecommendationsGUI.i
+	@echo ... AIRecommendationsGUI.s
 	@echo ... CardioWorkout.obj
 	@echo ... CardioWorkout.i
 	@echo ... CardioWorkout.s
@@ -372,6 +450,9 @@ help:
 	@echo ... UserProfile.obj
 	@echo ... UserProfile.i
 	@echo ... UserProfile.s
+	@echo ... UserProfileGUI.obj
+	@echo ... UserProfileGUI.i
+	@echo ... UserProfileGUI.s
 	@echo ... Workout.obj
 	@echo ... Workout.i
 	@echo ... Workout.s

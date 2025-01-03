@@ -25,6 +25,8 @@ public:
 
     // destructor
     virtual ~Workout() {}
+
+    int getDuration() const { return duration; }
 };
 
 #endif // WORKOUT_H

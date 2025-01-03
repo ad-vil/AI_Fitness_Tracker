@@ -4,22 +4,29 @@
 
 #include "UserProfile.h"
 
-// initalize user profile with attributes
-UserProfile::UserProfile(const string& name, int age, double weight, double height, const string& goal, const string& gender)
+UserProfile::UserProfile(const std::string& name, int age, double weight, double height,
+                         const std::string& goal, const std::string& gender)
     : name(name), age(age), weight(weight), height(height), goal(goal), gender(gender) {}
 
-// update weight and height in user profile
+std::string UserProfile::getName() const { return name; }
+int UserProfile::getAge() const { return age; }
+double UserProfile::getWeight() const { return weight; }
+double UserProfile::getHeight() const { return height; }
+std::string UserProfile::getGoal() const { return goal; }
+std::string UserProfile::getGender() const { return gender; }
+
+void UserProfile::setName(const std::string& newName) { name = newName; }
+void UserProfile::setAge(int newAge) { age = newAge; }
+
 void UserProfile::updateProfile(double newWeight, double newHeight) {
     weight = newWeight;
     height = newHeight;
 }
 
-// displays profile
-void UserProfile::displayProfile() const {
-    cout << "name: " << name << endl;
-    cout << "age: " << age << endl;
-    cout << "weight: " << weight << " lbs" << endl;
-    cout << "height: " << height << " inches" << endl;
-    cout << "goal: " << goal << endl;
-    cout << "gender: " << gender << endl;
+std::string UserProfile::getProfileInfo() const {
+    return "Name: " + name + "\nAge: " + std::to_string(age) +
+           "\nHeight: " + std::to_string(height) + " inches" +
+           "\nWeight: " + std::to_string(weight) + " lbs" +
+           "\nGoal: " + goal + "\nGender: " + gender;
 }
+

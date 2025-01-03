@@ -27,9 +27,12 @@ set(SOURCES
 )
 
 set(HEADERS
+        ${HEADERS}
         FitnessTrackerGUI.h
-        UserProfile.h
-        CardioWorkout.h
+        WorkoutGUI.h
+        UserProfileGUI.h
+        AIEngine.h
+        AIRecommendationsGUI.h
 )
 
 # Enable Qt's MOC (Meta-Object Compiler)
@@ -38,7 +41,8 @@ set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTORCC ON)
 
 # Create the executable
-add_executable(FitnessTracker main.cpp UserProfile.cpp Workout.cpp CardioWorkout.cpp NormalWorkout.cpp FitnessTrackerGUI.cpp WorkoutGUI.cpp)
+add_executable(FitnessTracker main.cpp UserProfile.cpp Workout.cpp CardioWorkout.cpp NormalWorkout.cpp
+        FitnessTrackerGUI.cpp WorkoutGUI.cpp UserProfileGUI.cpp AIEngine.cpp AIRecommendationsGUI.cpp)
 
 # Link Qt libraries
 target_link_libraries(FitnessTracker Qt6::Core Qt6::Gui Qt6::Widgets)

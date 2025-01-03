@@ -5,29 +5,47 @@
 #include "FitnessTrackerGUI.h"
 
 FitnessTrackerGUI::FitnessTrackerGUI(QWidget *parent) : QWidget(parent) {
-    // Set up the layout
-    auto *layout = new QVBoxLayout(this);
+    // Main layout
+    auto *mainLayout = new QVBoxLayout(this);
 
-    // Name input
+    // Create tab widget
+    tabWidget = new QTabWidget(this);
+
+    // Create main profile widget
+    auto *profileWidget = new QWidget(this);
+    auto *profileLayout = new QVBoxLayout(profileWidget);
+
+    // Profile components
     nameInput = new QLineEdit(this);
     nameInput->setPlaceholderText("Enter your name");
-    layout->addWidget(nameInput);
+    profileLayout->addWidget(nameInput);
 
-    // Profile label
     profileLabel = new QLabel("Profile: [Empty]", this);
-    layout->addWidget(profileLabel);
+    profileLayout->addWidget(profileLabel);
 
-    // Update profile button
     updateProfileButton = new QPushButton("Update Profile", this);
-    layout->addWidget(updateProfileButton);
+    profileLayout->addWidget(updateProfileButton);
 
-    // Log workout button
     logWorkoutButton = new QPushButton("Log Workout", this);
-    layout->addWidget(logWorkoutButton);
+    profileLayout->addWidget(logWorkoutButton);
+
+    profileWidget->setLayout(profileLayout);
+
+    // Create AI tab
+    aiTab = new AIRecommendationsGUI(this);
+
+    // Add tabs
+    tabWidget->addTab(profileWidget, "Profile");
+    tabWidget->addTab(aiTab, "AI Recommendations");
+
+    // Add tab widget to main layout
+    mainLayout->addWidget(tabWidget);
 
     // Connect signals to slots
     connect(updateProfileButton, &QPushButton::clicked, this, &FitnessTrackerGUI::updateProfile);
     connect(logWorkoutButton, &QPushButton::clicked, this, &FitnessTrackerGUI::logWorkout);
+
+    setLayout(mainLayout);
 }
 
 void FitnessTrackerGUI::updateProfile() {
@@ -36,7 +54,6 @@ void FitnessTrackerGUI::updateProfile() {
 }
 
 void FitnessTrackerGUI::logWorkout() {
-    // Create and show the workout GUI
     WorkoutGUI workoutGui(this);
-    workoutGui.exec(); // Show the workout GUI as a modal dialog
+    workoutGui.exec();
 }

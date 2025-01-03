@@ -6,29 +6,35 @@
 #define USERPROFILE_H
 
 #include <string>
-#include <iostream>
 
-using namespace std;
-
-// manages user data
 class UserProfile {
 private:
-    string name;
+    std::string name;
     int age;
-    double weight;  // in lbs
-    double height;  // in inches
-    string goal;  // like weight loss or muscle gain
-    string gender;
+    double weight;
+    double height;
+    std::string goal;
+    std::string gender;
 
 public:
-    // initalize user profile
-    UserProfile(const string& name, int age, double weight, double height, const string& goal, const string& gender);
+    UserProfile(const std::string& name = "", int age = 0, double weight = 0.0, double height = 0.0,
+                const std::string& goal = "", const std::string& gender = "");
 
-    // updates user profile with new weight and height
-    void updateProfile(double newWeight, double newHeight);
+    // Getters
+    std::string getName() const;
+    int getAge() const;
+    double getWeight() const;
+    double getHeight() const;
+    std::string getGoal() const;
+    std::string getGender() const;
 
-    // display user profile details
-    void displayProfile() const;
+    // Setters
+    void setName(const std::string& name);
+    void setAge(int age);
+    void updateProfile(double weight, double height);
+
+    // Additional functions
+    std::string getProfileInfo() const;
 };
 
-#endif // USERPROFILE_H
+#endif
