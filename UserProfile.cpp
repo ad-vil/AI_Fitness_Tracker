@@ -17,6 +17,10 @@ std::string UserProfile::getGender() const { return gender; }
 
 void UserProfile::setName(const std::string& newName) { name = newName; }
 void UserProfile::setAge(int newAge) { age = newAge; }
+void UserProfile::setWeight(double newWeight) { weight = newWeight; }
+void UserProfile::setHeight(double newHeight) { height = newHeight; }
+void UserProfile::setGoal(const std::string& newGoal) { goal = newGoal; }
+void UserProfile::setGender(const std::string& newGender) { gender = newGender; }
 
 void UserProfile::updateProfile(double newWeight, double newHeight) {
     weight = newWeight;
@@ -24,9 +28,10 @@ void UserProfile::updateProfile(double newWeight, double newHeight) {
 }
 
 std::string UserProfile::getProfileInfo() const {
-    return "Name: " + name + "\nAge: " + std::to_string(age) +
-           "\nHeight: " + std::to_string(height) + " inches" +
-           "\nWeight: " + std::to_string(weight) + " lbs" +
-           "\nGoal: " + goal + "\nGender: " + gender;
+    return "Name: " + name +
+           "\nAge: " + std::to_string(age) +
+           "\nHeight: " + std::to_string(height) + " cm" +
+           "\nWeight: " + std::to_string(weight) + " kg" +
+           "\nGoal: " + goal +
+           "\nGender: " + gender;
 }
-

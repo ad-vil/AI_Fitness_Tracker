@@ -27,11 +27,13 @@ UserProfileGUI::UserProfileGUI(QWidget* parent) : QWidget(parent), userProfile(n
     weightInput->setRange(40, 200);
     weightInput->setValue(70);
     weightInput->setSuffix(" kg");
+    weightInput->setDecimals(1);
 
     heightInput = new QDoubleSpinBox(this);
     heightInput->setRange(120, 220);
     heightInput->setValue(170);
     heightInput->setSuffix(" cm");
+    heightInput->setDecimals(1);
 
     goalInput = new QComboBox(this);
     goalInput->addItems({"weight loss", "muscle gain", "endurance", "strength"});
@@ -58,6 +60,7 @@ UserProfileGUI::UserProfileGUI(QWidget* parent) : QWidget(parent), userProfile(n
         "QLabel { background-color: #2b2b2b; color: white; padding: 10px; "
         "border-radius: 5px; margin: 10px; }"
     );
+    profileDisplay->setMinimumHeight(150);  // Ensure enough space for all info
     mainLayout->addWidget(profileDisplay);
 
     // Create update button
@@ -77,23 +80,20 @@ UserProfileGUI::UserProfileGUI(QWidget* parent) : QWidget(parent), userProfile(n
 }
 
 void UserProfileGUI::handleUpdateProfile() {
-    // Create or update user profile
     if (!userProfile) {
-        userProfile = new UserProfile(
-            nameInput->text().toStdString(),
-            ageInput->value(),
-            weightInput->value(),
-            heightInput->value(),
-            goalInput->currentText().toStdString(),
-            genderInput->currentText().toStdString()
-        );
-    } else {
-        userProfile->setName(nameInput->text().toStdString());
-        userProfile->setAge(ageInput->value());
-        userProfile->updateProfile(weightInput->value(), heightInput->value());
+        userProfile = new UserProfile();
     }
 
+    // Update all profile fields
+    userProfile->setName(nameInput->text().toStdString());
+    userProfile->setAge(ageInput->value());
+    userProfile->setWeight(weightInput->value());
+    userProfile->setHeight(heightInput->value());
+    userProfile->setGoal(goalInput->currentText().toStdString());
+    userProfile->setGender(genderInput->currentText().toStdString());
+
     refreshProfileDisplay();
+    emit profileUpdated();
 }
 
 void UserProfileGUI::refreshProfileDisplay() {

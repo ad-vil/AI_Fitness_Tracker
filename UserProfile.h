@@ -29,11 +29,14 @@ public:
     std::string getGender() const;
 
     // Setters
-    void setName(const std::string& name);
-    void setAge(int age);
+    void setName(const std::string& newName);
+    void setAge(int newAge);
+    void setWeight(double newWeight);
+    void setHeight(double newHeight);
+    void setGoal(const std::string& newGoal);
+    void setGender(const std::string& newGender);
     void updateProfile(double weight, double height);
 
-    // Additional functions
     std::string getProfileInfo() const;
 };
 

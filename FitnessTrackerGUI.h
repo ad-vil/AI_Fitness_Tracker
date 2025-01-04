@@ -11,9 +11,10 @@
 #include <QPushButton>
 #include <QLineEdit>
 #include <QLabel>
-#include <QTabWidget>  // Add this
+#include <QTabWidget>
 #include "WorkoutGUI.h"
-#include "AIRecommendationsGUI.h"  // Add this
+#include "AIRecommendationsGUI.h"
+#include "UserProfileGUI.h"
 
 class FitnessTrackerGUI : public QWidget {
     Q_OBJECT
@@ -22,16 +23,14 @@ public:
     explicit FitnessTrackerGUI(QWidget *parent = nullptr);
 
     private slots:
-        void updateProfile();
-    void logWorkout();
+        void logWorkout();
+    void onProfileUpdated();
 
 private:
-    QLineEdit *nameInput;
-    QLabel *profileLabel;
-    QPushButton *updateProfileButton;
+    QTabWidget *tabWidget;
+    UserProfileGUI *profileGui;
     QPushButton *logWorkoutButton;
-    QTabWidget *tabWidget;           // Add this
-    AIRecommendationsGUI *aiTab;     // Add this
+    AIRecommendationsGUI *aiTab;
 };
 
 #endif // FITNESS_TRACKER_GUI_H

@@ -18,6 +18,9 @@
 class UserProfileGUI : public QWidget {
     Q_OBJECT
 
+signals:
+    void profileUpdated(); // New signal
+
 private:
     QLineEdit* nameInput;
     QSpinBox* ageInput;

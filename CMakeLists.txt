@@ -5,7 +5,6 @@
 #
 #add_executable(Main main.cpp UserProfile.cpp Workout.cpp CardioWorkout.cpp NormalWorkout.cpp)
 
-
 cmake_minimum_required(VERSION 3.15)
 project(FitnessTracker)
 
@@ -18,31 +17,31 @@ set(CMAKE_PREFIX_PATH "C:/Qt/6.8.1/mingw_64/lib/cmake")
 # Find Qt modules
 find_package(Qt6 REQUIRED COMPONENTS Core Gui Widgets)
 
-# Add sources and headers
-set(SOURCES
-        main.cpp
-        FitnessTrackerGUI.cpp
-        UserProfile.cpp
-        CardioWorkout.cpp
-)
-
-set(HEADERS
-        ${HEADERS}
-        FitnessTrackerGUI.h
-        WorkoutGUI.h
-        UserProfileGUI.h
-        AIEngine.h
-        AIRecommendationsGUI.h
-)
-
 # Enable Qt's MOC (Meta-Object Compiler)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTORCC ON)
 
+# Define all source files
+set(SOURCES
+        main.cpp
+        FitnessTrackerGUI.cpp
+        UserProfile.cpp
+        Workout.cpp
+        CardioWorkout.cpp
+        NormalWorkout.cpp
+        WorkoutGUI.cpp
+        UserProfileGUI.cpp
+        AIEngine.cpp
+        AIRecommendationsGUI.cpp
+)
+
 # Create the executable
-add_executable(FitnessTracker main.cpp UserProfile.cpp Workout.cpp CardioWorkout.cpp NormalWorkout.cpp
-        FitnessTrackerGUI.cpp WorkoutGUI.cpp UserProfileGUI.cpp AIEngine.cpp AIRecommendationsGUI.cpp)
+add_executable(FitnessTracker ${SOURCES})
 
 # Link Qt libraries
-target_link_libraries(FitnessTracker Qt6::Core Qt6::Gui Qt6::Widgets)
+target_link_libraries(FitnessTracker PRIVATE
+        Qt6::Core
+        Qt6::Gui
+        Qt6::Widgets
+)
