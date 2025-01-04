@@ -3,55 +3,85 @@
 //
 
 #include "FitnessTrackerGUI.h"
+#include <QDateTime>
 
 FitnessTrackerGUI::FitnessTrackerGUI(QWidget *parent) : QWidget(parent) {
-    // Main layout
     auto *mainLayout = new QVBoxLayout(this);
-
-    // Create tab widget
     tabWidget = new QTabWidget(this);
 
-    // Create UserProfileGUI
+    // Create and setup UserProfileGUI
     profileGui = new UserProfileGUI(this);
 
     // Create workout button
     logWorkoutButton = new QPushButton("Log Workout", this);
 
-    // Create a container widget for profile tab
+    // Create profile container
     auto *profileContainer = new QWidget(this);
     auto *profileLayout = new QVBoxLayout(profileContainer);
     profileLayout->addWidget(profileGui);
     profileLayout->addWidget(logWorkoutButton);
-    profileContainer->setLayout(profileLayout);
 
-    // Create AI tab
+    // Create AI recommendations tab
     aiTab = new AIRecommendationsGUI(this);
+
+    // Create workout history tab
+    historyTab = new WorkoutHistoryGUI(&workoutManager, this);
 
     // Add tabs
     tabWidget->addTab(profileContainer, "Profile");
     tabWidget->addTab(aiTab, "AI Recommendations");
+    tabWidget->addTab(historyTab, "Workout History");  // Add the history tab
 
-    // Add tab widget to main layout
     mainLayout->addWidget(tabWidget);
 
-    // Connect signals to slots
+    // Connect signals
     connect(logWorkoutButton, &QPushButton::clicked, this, &FitnessTrackerGUI::logWorkout);
     connect(profileGui, &UserProfileGUI::profileUpdated, this, &FitnessTrackerGUI::onProfileUpdated);
 
     setLayout(mainLayout);
-    setMinimumSize(400, 600);  // Set a reasonable minimum size
+    setMinimumSize(400, 600);
 }
 
 void FitnessTrackerGUI::logWorkout() {
-    WorkoutGUI workoutGui(this);
-    workoutGui.exec();
+    auto *workoutDialog = new WorkoutGUI(this);
+    connect(workoutDialog, &WorkoutGUI::workoutLogged, this, &FitnessTrackerGUI::onWorkoutLogged);
+    workoutDialog->exec();
 }
 
 void FitnessTrackerGUI::onProfileUpdated() {
-    // You can add any additional logic here that needs to happen when the profile is updated
-    // For example, updating the AI recommendations based on the new profile
     if (UserProfile* profile = profileGui->getCurrentProfile()) {
-        // Update AI recommendations or other components based on the profile
-        // aiTab->updateRecommendations(profile);
+        aiTab->updateRecommendations(profile);
+    }
+}
+
+void FitnessTrackerGUI::onWorkoutLogged(const QString& type, const QMap<QString, QString>& data) {
+    try {
+        if (type == "normal") {
+            workoutManager.addNormalWorkout(
+                data["date"].toStdString(),
+                data["duration"].toInt(),
+                data["calories"].toInt(),
+                "General",  // You might want to add an exercise type field
+                data["sets"].toInt(),
+                data["reps"].toInt()
+            );
+        } else if (type == "cardio") {
+            workoutManager.addCardioWorkout(
+                data["date"].toStdString(),
+                data["duration"].toInt(),
+                data["calories"].toInt(),
+                data["distance"].toDouble()
+            );
+        }
+
+        // Refresh the workout history after logging a new workout
+        historyTab->refreshHistory();
+
+        // Update AI recommendations with new workout data
+        if (UserProfile* profile = profileGui->getCurrentProfile()) {
+            aiTab->updateRecommendations(profile);
+        }
+    } catch (const std::exception& e) {
+        qDebug() << "Error logging workout:" << e.what();
     }
 }

@@ -6,31 +6,43 @@
 #include <QMessageBox>
 
 WorkoutGUI::WorkoutGUI(QWidget *parent) : QDialog(parent) {
-    // Dropdown for workout type
+    setupUI();
+}
+
+void WorkoutGUI::setupUI() {
+    // Workout type selection
     workoutTypeDropdown = new QComboBox(this);
     workoutTypeDropdown->addItem("Normal Workout");
     workoutTypeDropdown->addItem("Cardio Workout");
 
-    // Input fields for Normal Workout
+    // Common inputs
+    durationInput = new QLineEdit(this);
+    durationInput->setPlaceholderText("Duration (minutes)");
+    caloriesInput = new QLineEdit(this);
+    caloriesInput->setPlaceholderText("Calories burned");
+
+    // Normal workout inputs
     setsInput = new QLineEdit(this);
-    setsInput->setPlaceholderText("Enter number of sets");
+    setsInput->setPlaceholderText("Number of sets");
     repsInput = new QLineEdit(this);
-    repsInput->setPlaceholderText("Enter number of reps");
+    repsInput->setPlaceholderText("Number of reps");
 
-    // Input field for Cardio Workout
+    // Cardio workout inputs
     distanceInput = new QLineEdit(this);
-    distanceInput->setPlaceholderText("Enter distance (e.g., km or miles)");
+    distanceInput->setPlaceholderText("Distance (km)");
 
-    // Feedback label
+    // Submit button and feedback
+    submitButton = new QPushButton("Log Workout", this);
     feedbackLabel = new QLabel(this);
-
-    // Submit button
-    submitButton = new QPushButton("Submit", this);
 
     // Layout
     mainLayout = new QVBoxLayout(this);
     mainLayout->addWidget(new QLabel("Workout Type:"));
     mainLayout->addWidget(workoutTypeDropdown);
+    mainLayout->addWidget(new QLabel("Duration:"));
+    mainLayout->addWidget(durationInput);
+    mainLayout->addWidget(new QLabel("Calories:"));
+    mainLayout->addWidget(caloriesInput);
     mainLayout->addWidget(new QLabel("Sets:"));
     mainLayout->addWidget(setsInput);
     mainLayout->addWidget(new QLabel("Reps:"));
@@ -40,55 +52,71 @@ WorkoutGUI::WorkoutGUI(QWidget *parent) : QDialog(parent) {
     mainLayout->addWidget(submitButton);
     mainLayout->addWidget(feedbackLabel);
 
-    setLayout(mainLayout);
-
-    // Initially hide cardio-specific fields
-    distanceInput->hide();
-
-    // Connect signals and slots
-    connect(workoutTypeDropdown, &QComboBox::currentTextChanged, this, &WorkoutGUI::handleWorkoutTypeChange);
+    // Connect signals
+    connect(workoutTypeDropdown, &QComboBox::currentTextChanged,
+            this, &WorkoutGUI::handleWorkoutTypeChange);
     connect(submitButton, &QPushButton::clicked, [this]() {
-        QString type = workoutTypeDropdown->currentText();
-        if (type == "Normal Workout") {
+        if (workoutTypeDropdown->currentText() == "Normal Workout") {
             logNormalWorkout();
-        } else if (type == "Cardio Workout") {
+        } else {
             logCardioWorkout();
         }
     });
-}
 
-WorkoutGUI::~WorkoutGUI() = default;
+    handleWorkoutTypeChange(workoutTypeDropdown->currentText());
+}
 
 void WorkoutGUI::handleWorkoutTypeChange(const QString &type) {
     if (type == "Normal Workout") {
         setsInput->show();
         repsInput->show();
         distanceInput->hide();
-    } else if (type == "Cardio Workout") {
+    } else {
         setsInput->hide();
         repsInput->hide();
         distanceInput->show();
     }
 }
 
-void WorkoutGUI::logCardioWorkout() {
-    QString distance = distanceInput->text();
-    if (distance.isEmpty()) {
-        QMessageBox::warning(this, "Input Error", "Please enter the distance for the cardio workout.");
-        return;
+bool WorkoutGUI::validateInputs() {
+    if (durationInput->text().isEmpty() || caloriesInput->text().isEmpty()) {
+        QMessageBox::warning(this, "Input Error", "Please fill in duration and calories burned.");
+        return false;
     }
-
-    feedbackLabel->setText("Logged Cardio Workout: Distance = " + distance);
+    return true;
 }
 
 void WorkoutGUI::logNormalWorkout() {
-    QString sets = setsInput->text();
-    QString reps = repsInput->text();
-
-    if (sets.isEmpty() || reps.isEmpty()) {
-        QMessageBox::warning(this, "Input Error", "Please fill in both sets and reps for the normal workout.");
+    if (!validateInputs() || setsInput->text().isEmpty() || repsInput->text().isEmpty()) {
+        QMessageBox::warning(this, "Input Error", "Please fill in all fields.");
         return;
     }
 
-    feedbackLabel->setText("Logged Normal Workout: Sets = " + sets + ", Reps = " + reps);
+    QMap<QString, QString> workoutData;
+    workoutData["date"] = QDateTime::currentDateTime().toString("yyyy-MM-dd");
+    workoutData["duration"] = durationInput->text();
+    workoutData["calories"] = caloriesInput->text();
+    workoutData["sets"] = setsInput->text();
+    workoutData["reps"] = repsInput->text();
+
+    emit workoutLogged("normal", workoutData);
+    accept();
 }
+
+void WorkoutGUI::logCardioWorkout() {
+    if (!validateInputs() || distanceInput->text().isEmpty()) {
+        QMessageBox::warning(this, "Input Error", "Please fill in all fields.");
+        return;
+    }
+
+    QMap<QString, QString> workoutData;
+    workoutData["date"] = QDateTime::currentDateTime().toString("yyyy-MM-dd");
+    workoutData["duration"] = durationInput->text();
+    workoutData["calories"] = caloriesInput->text();
+    workoutData["distance"] = distanceInput->text();
+
+    emit workoutLogged("cardio", workoutData);
+    accept();
+}
+
+WorkoutGUI::~WorkoutGUI() = default;

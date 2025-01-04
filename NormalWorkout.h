@@ -20,6 +20,10 @@ public:
 
     // show strength workout info
     void displayWorkout() const override;
+
+    int getSets() const { return sets; }
+    int getReps() const { return reps; }
+    std::string getExerciseType() const { return exerciseType; }
 };
 
 #endif // NORMALWORKOUT_H

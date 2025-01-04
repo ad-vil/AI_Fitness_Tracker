@@ -45,6 +45,7 @@
 // }
 
 
+
 #include <QApplication>
 #include "FitnessTrackerGUI.h"
 

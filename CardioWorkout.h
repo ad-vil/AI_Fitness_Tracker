@@ -18,6 +18,9 @@ public:
 
     // display cardio workout details
     void displayWorkout() const override;
+
+    double getDistance() const { return distance; }
+
 };
 
 #endif // CARDIOWORKOUT_H

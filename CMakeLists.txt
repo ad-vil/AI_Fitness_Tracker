@@ -1,10 +1,3 @@
-#cmake_minimum_required(VERSION 3.29)
-#project(AI_Fitness_Tracker)
-#
-#set(CMAKE_CXX_STANDARD 20)
-#
-#add_executable(Main main.cpp UserProfile.cpp Workout.cpp CardioWorkout.cpp NormalWorkout.cpp)
-
 cmake_minimum_required(VERSION 3.15)
 project(FitnessTracker)
 
@@ -22,6 +15,7 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTORCC ON)
 
+
 # Define all source files
 set(SOURCES
         main.cpp
@@ -34,14 +28,20 @@ set(SOURCES
         UserProfileGUI.cpp
         AIEngine.cpp
         AIRecommendationsGUI.cpp
+        WorkoutHistoryGUI.cpp
+        APIClient.cpp
 )
 
 # Create the executable
 add_executable(FitnessTracker ${SOURCES})
 
-# Link Qt libraries
+# Link libraries
 target_link_libraries(FitnessTracker PRIVATE
         Qt6::Core
         Qt6::Gui
         Qt6::Widgets
 )
+
+# Add vcpkg toolchain file
+set(CMAKE_TOOLCHAIN_FILE "[path_to_vcpkg]/scripts/buildsystems/vcpkg.cmake"
+        CACHE STRING "Vcpkg toolchain file")

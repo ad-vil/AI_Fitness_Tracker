@@ -4,87 +4,79 @@
 
 #include "AIEngine.h"
 
-AIEngine::AIEngine() {
-    // Initialize goal parameters
-    goalParameters["muscle gain"] = WorkoutParameters(60, 4, 12, 0.8);
-    goalParameters["weight loss"] = WorkoutParameters(45, 3, 15, 0.7);
-    goalParameters["endurance"] = WorkoutParameters(90, 3, 20, 0.6);
-    goalParameters["strength"] = WorkoutParameters(45, 5, 5, 0.9);
-}
-
 std::vector<std::string> AIEngine::generateWorkoutPlan(const UserProfile& profile) {
     std::vector<std::string> plan;
-    WorkoutParameters params = calculateWorkoutParameters(profile);
-
-    // Generate workout based on user's goal
     std::string goal = profile.getGoal();
-    if (goal == "muscle gain") {
-        plan.push_back("Day 1: Push (Chest, Shoulders, Triceps)");
-        plan.push_back("Day 2: Pull (Back, Biceps)");
-        plan.push_back("Day 3: Legs");
-        plan.push_back("Day 4: Rest");
-        plan.push_back("Recommended sets: " + std::to_string(params.recommendedSets));
-        plan.push_back("Recommended reps: " + std::to_string(params.recommendedReps));
+
+    if (goal == "weight loss") {
+        plan = {
+            "Day 1: 30 minutes cardio (running or cycling)",
+            "Day 2: Full body circuit training - 3 sets of 15 reps",
+            "Day 3: HIIT workout - 20 minutes",
+            "Day 4: Rest day with light stretching",
+            "Day 5: 45 minutes cardio + core exercises"
+        };
+    } else if (goal == "muscle gain") {
+        plan = {
+            "Day 1: Chest and Triceps - 4 sets of 8-12 reps",
+            "Day 2: Back and Biceps - 4 sets of 8-12 reps",
+            "Day 3: Rest day",
+            "Day 4: Legs and Shoulders - 4 sets of 8-12 reps",
+            "Day 5: Core and Recovery exercises"
+        };
+    } else if (goal == "endurance") {
+        plan = {
+            "Day 1: Long distance running - 45 minutes",
+            "Day 2: Swimming or cycling - 30 minutes",
+            "Day 3: Light cardio and stretching",
+            "Day 4: Interval training - 30 minutes",
+            "Day 5: Endurance circuit training"
+        };
+    } else {  // strength or default
+        plan = {
+            "Day 1: Upper body strength - 5 sets of 5 reps",
+            "Day 2: Lower body strength - 5 sets of 5 reps",
+            "Day 3: Rest day",
+            "Day 4: Full body power exercises",
+            "Day 5: Core and compound lifts"
+        };
     }
-    // Add more goal-specific plans...
 
     return plan;
 }
 
-std::string AIEngine::generateWorkoutAdvice(const UserProfile& profile,
-                                          const std::vector<Workout*>& workoutHistory) {
+std::string AIEngine::generateWorkoutAdvice(const UserProfile& profile, const std::vector<Workout*>& workoutHistory) {
     std::string advice;
+    std::string goal = profile.getGoal();
 
-    // Analyze recent progress
-    double progressScore = calculateProgressScore(workoutHistory);
-
-    if (progressScore < 0.5) {
-        advice = "Consider increasing workout frequency. ";
-    } else if (progressScore > 0.8) {
-        advice = "Great progress! Consider increasing intensity. ";
-    }
-
-    // Add goal-specific advice
-    if (profile.getGoal() == "muscle gain") {
-        advice += "Focus on progressive overload and proper form. ";
+    if (workoutHistory.empty()) {
+        advice = "Welcome! Start with lighter weights/intensity and focus on proper form. "
+                "Aim to workout 3-5 times per week consistently.";
+    } else {
+        if (goal == "weight loss") {
+            advice = "Try to maintain a caloric deficit and combine cardio with strength training. "
+                    "Keep your heart rate elevated during workouts.";
+        } else if (goal == "muscle gain") {
+            advice = "Focus on progressive overload and ensure adequate protein intake. "
+                    "Don't forget to get enough rest between workouts.";
+        } else if (goal == "endurance") {
+            advice = "Gradually increase your workout duration. Stay hydrated and maintain "
+                    "a steady pace during cardio sessions.";
+        } else {
+            advice = "Focus on compound movements and proper form. Ensure adequate rest "
+                    "between sets for maximum strength gains.";
+        }
     }
 
     return advice;
 }
 
 double AIEngine::calculateProgressScore(const std::vector<Workout*>& workoutHistory) {
-    if (workoutHistory.empty()) return 0.0;
-
-    // Calculate progress based on workout frequency and intensity
-    int totalWorkouts = workoutHistory.size();
-    int totalDuration = 0;
-
-    for (const auto& workout : workoutHistory) {
-        totalDuration += workout->getDuration();
+    if (workoutHistory.empty()) {
+        return 0.0;
     }
 
-    // Simple scoring algorithm (can be made more sophisticated)
-    double frequencyScore = std::min(1.0, totalWorkouts / 30.0);  // Normalized to 30 days
-    double durationScore = std::min(1.0, totalDuration / (60.0 * totalWorkouts));
-
-    return (frequencyScore + durationScore) / 2.0;
-}
-
-AIEngine::WorkoutParameters AIEngine::calculateWorkoutParameters(const UserProfile& profile) const {
-    // Get base parameters for the user's goal
-    auto it = goalParameters.find(profile.getGoal());
-    if (it == goalParameters.end()) {
-        // Return default parameters if goal not found
-        return WorkoutParameters();
-    }
-
-    WorkoutParameters params = it->second;
-
-    // Adjust based on user's characteristics
-    if (profile.getAge() > 50) {
-        params.recommendedIntensity *= 0.9;
-        params.recommendedDuration *= 0.9;
-    }
-
-    return params;
+    // Simple scoring: 0.0 to 1.0 based on number of workouts
+    // More workouts = higher score, max out at 10 workouts
+    return std::min(1.0, workoutHistory.size() / 10.0);
 }

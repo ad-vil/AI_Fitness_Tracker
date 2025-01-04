@@ -27,6 +27,9 @@ public:
     virtual ~Workout() {}
 
     int getDuration() const { return duration; }
+
+    virtual std::string getDate() const { return date; }
+    virtual int getCaloriesBurned() const { return caloriesBurned; }
 };
 
 #endif // WORKOUT_H

@@ -202,6 +202,30 @@ AIRecommendationsGUI.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\FitnessTracker.dir\build.make CMakeFiles/FitnessTracker.dir/AIRecommendationsGUI.cpp.s
 .PHONY : AIRecommendationsGUI.cpp.s
 
+APIClient.obj: APIClient.cpp.obj
+.PHONY : APIClient.obj
+
+# target to build an object file
+APIClient.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\FitnessTracker.dir\build.make CMakeFiles/FitnessTracker.dir/APIClient.cpp.obj
+.PHONY : APIClient.cpp.obj
+
+APIClient.i: APIClient.cpp.i
+.PHONY : APIClient.i
+
+# target to preprocess a source file
+APIClient.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\FitnessTracker.dir\build.make CMakeFiles/FitnessTracker.dir/APIClient.cpp.i
+.PHONY : APIClient.cpp.i
+
+APIClient.s: APIClient.cpp.s
+.PHONY : APIClient.s
+
+# target to generate assembly for a file
+APIClient.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\FitnessTracker.dir\build.make CMakeFiles/FitnessTracker.dir/APIClient.cpp.s
+.PHONY : APIClient.cpp.s
+
 CardioWorkout.obj: CardioWorkout.cpp.obj
 .PHONY : CardioWorkout.obj
 
@@ -394,6 +418,30 @@ WorkoutGUI.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\FitnessTracker.dir\build.make CMakeFiles/FitnessTracker.dir/WorkoutGUI.cpp.s
 .PHONY : WorkoutGUI.cpp.s
 
+WorkoutHistoryGUI.obj: WorkoutHistoryGUI.cpp.obj
+.PHONY : WorkoutHistoryGUI.obj
+
+# target to build an object file
+WorkoutHistoryGUI.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\FitnessTracker.dir\build.make CMakeFiles/FitnessTracker.dir/WorkoutHistoryGUI.cpp.obj
+.PHONY : WorkoutHistoryGUI.cpp.obj
+
+WorkoutHistoryGUI.i: WorkoutHistoryGUI.cpp.i
+.PHONY : WorkoutHistoryGUI.i
+
+# target to preprocess a source file
+WorkoutHistoryGUI.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\FitnessTracker.dir\build.make CMakeFiles/FitnessTracker.dir/WorkoutHistoryGUI.cpp.i
+.PHONY : WorkoutHistoryGUI.cpp.i
+
+WorkoutHistoryGUI.s: WorkoutHistoryGUI.cpp.s
+.PHONY : WorkoutHistoryGUI.s
+
+# target to generate assembly for a file
+WorkoutHistoryGUI.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\FitnessTracker.dir\build.make CMakeFiles/FitnessTracker.dir/WorkoutHistoryGUI.cpp.s
+.PHONY : WorkoutHistoryGUI.cpp.s
+
 main.obj: main.cpp.obj
 .PHONY : main.obj
 
@@ -435,6 +483,9 @@ help:
 	@echo ... AIRecommendationsGUI.obj
 	@echo ... AIRecommendationsGUI.i
 	@echo ... AIRecommendationsGUI.s
+	@echo ... APIClient.obj
+	@echo ... APIClient.i
+	@echo ... APIClient.s
 	@echo ... CardioWorkout.obj
 	@echo ... CardioWorkout.i
 	@echo ... CardioWorkout.s
@@ -459,6 +510,9 @@ help:
 	@echo ... WorkoutGUI.obj
 	@echo ... WorkoutGUI.i
 	@echo ... WorkoutGUI.s
+	@echo ... WorkoutHistoryGUI.obj
+	@echo ... WorkoutHistoryGUI.i
+	@echo ... WorkoutHistoryGUI.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

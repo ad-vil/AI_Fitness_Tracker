@@ -1,0 +1,42 @@
+file(REMOVE_RECURSE
+  "CMakeFiles/FitnessTracker_autogen.dir/AutogenUsed.txt"
+  "CMakeFiles/FitnessTracker_autogen.dir/ParseCache.txt"
+  "FitnessTracker_autogen"
+  "CMakeFiles/FitnessTracker.dir/AIEngine.cpp.obj"
+  "CMakeFiles/FitnessTracker.dir/AIEngine.cpp.obj.d"
+  "CMakeFiles/FitnessTracker.dir/AIRecommendationsGUI.cpp.obj"
+  "CMakeFiles/FitnessTracker.dir/AIRecommendationsGUI.cpp.obj.d"
+  "CMakeFiles/FitnessTracker.dir/APIClient.cpp.obj"
+  "CMakeFiles/FitnessTracker.dir/APIClient.cpp.obj.d"
+  "CMakeFiles/FitnessTracker.dir/CardioWorkout.cpp.obj"
+  "CMakeFiles/FitnessTracker.dir/CardioWorkout.cpp.obj.d"
+  "CMakeFiles/FitnessTracker.dir/FitnessTrackerGUI.cpp.obj"
+  "CMakeFiles/FitnessTracker.dir/FitnessTrackerGUI.cpp.obj.d"
+  "CMakeFiles/FitnessTracker.dir/FitnessTracker_autogen/mocs_compilation.cpp.obj"
+  "CMakeFiles/FitnessTracker.dir/FitnessTracker_autogen/mocs_compilation.cpp.obj.d"
+  "CMakeFiles/FitnessTracker.dir/NormalWorkout.cpp.obj"
+  "CMakeFiles/FitnessTracker.dir/NormalWorkout.cpp.obj.d"
+  "CMakeFiles/FitnessTracker.dir/UserProfile.cpp.obj"
+  "CMakeFiles/FitnessTracker.dir/UserProfile.cpp.obj.d"
+  "CMakeFiles/FitnessTracker.dir/UserProfileGUI.cpp.obj"
+  "CMakeFiles/FitnessTracker.dir/UserProfileGUI.cpp.obj.d"
+  "CMakeFiles/FitnessTracker.dir/Workout.cpp.obj"
+  "CMakeFiles/FitnessTracker.dir/Workout.cpp.obj.d"
+  "CMakeFiles/FitnessTracker.dir/WorkoutGUI.cpp.obj"
+  "CMakeFiles/FitnessTracker.dir/WorkoutGUI.cpp.obj.d"
+  "CMakeFiles/FitnessTracker.dir/WorkoutHistoryGUI.cpp.obj"
+  "CMakeFiles/FitnessTracker.dir/WorkoutHistoryGUI.cpp.obj.d"
+  "CMakeFiles/FitnessTracker.dir/main.cpp.obj"
+  "CMakeFiles/FitnessTracker.dir/main.cpp.obj.d"
+  "FitnessTracker.exe"
+  "FitnessTracker.exe.manifest"
+  "FitnessTracker.pdb"
+  "FitnessTracker_autogen/mocs_compilation.cpp"
+  "FitnessTracker_autogen/timestamp"
+  "libFitnessTracker.dll.a"
+)
+
+# Per-language clean rules from dependency scanning.
+foreach(lang CXX)
+  include(CMakeFiles/FitnessTracker.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()
