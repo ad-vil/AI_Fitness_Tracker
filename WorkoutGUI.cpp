@@ -1,6 +1,13 @@
 #include "WorkoutGUI.h"
 #include <QMessageBox>
 
+/* flow:
+ * user fills out form
+ * click submit
+ * code emit signal with workout info
+ * close form
+ */
+
 // ctor
 WorkoutGUI::WorkoutGUI(QWidget *parent) : QDialog(parent) {
     setupUI();
@@ -103,8 +110,8 @@ void WorkoutGUI::logNormalWorkout() {
     workoutData["reps"] = repsInput->text();
 
     // emit signal w data and close dialog
-    emit workoutLogged("normal", workoutData);
-    accept();
+    emit workoutLogged("normal", workoutData); // broadcasts signal to finish logging
+    accept(); // closes form and completes logging
 }
 
 // logging cardio
