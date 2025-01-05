@@ -1,7 +1,3 @@
-//
-// Created by adil_ on 11/14/2024.
-//
-
 #ifndef CARDIOWORKOUT_H
 #define CARDIOWORKOUT_H
 

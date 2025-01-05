@@ -1,33 +1,30 @@
-//
-// Created by adil_ on 1/4/2025.
-//
-
 #include "WorkoutHistoryGUI.h"
 #include <QHeaderView>
 #include <QLabel>
 
+// ctor
 WorkoutHistoryGUI::WorkoutHistoryGUI(WorkoutManager* manager, QWidget* parent)
     : QWidget(parent), workoutManager(manager) {
+    // calling methods for table
     setupUI();
-    populateTable();
+    fillTable();
 }
 
 void WorkoutHistoryGUI::setupUI() {
-    auto* layout = new QVBoxLayout(this);
+    auto* layout = new QVBoxLayout(this); // creating vertical layout
 
-    // Title
+    // title
     auto* titleLabel = new QLabel("Workout History", this);
     titleLabel->setStyleSheet("font-size: 16px; font-weight: bold; margin: 10px;");
     layout->addWidget(titleLabel);
 
-    // Create table
+    // creating table
     historyTable = new QTableWidget(this);
     historyTable->setColumnCount(6);
-    historyTable->setHorizontalHeaderLabels({
-        "Date", "Type", "Duration (min)", "Calories", "Sets/Distance", "Reps"
-    });
+    historyTable->setHorizontalHeaderLabels({"Date", "Type", "Duration (min)",
+        "Calories", "Sets/Distance", "Reps"});
 
-    // Style the table
+    // styles for table
     historyTable->setAlternatingRowColors(true);
     historyTable->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     historyTable->setEditTriggers(QTableWidget::NoEditTriggers);
@@ -40,7 +37,7 @@ void WorkoutHistoryGUI::setupUI() {
 
     layout->addWidget(historyTable);
 
-    // Refresh button
+    // refresh button
     refreshButton = new QPushButton("Refresh History", this);
     refreshButton->setStyleSheet(
         "QPushButton { background-color: #4CAF50; color: white; padding: 8px; border-radius: 4px; }"
@@ -53,18 +50,18 @@ void WorkoutHistoryGUI::setupUI() {
     setLayout(layout);
 }
 
-void WorkoutHistoryGUI::populateTable() {
+void WorkoutHistoryGUI::fillTable() {
     const auto& history = workoutManager->getWorkoutHistory();
     historyTable->setRowCount(history.size());
 
     int row = 0;
     for (const auto& workout : history) {
-        // Common fields
+        // common fields for workouts
         historyTable->setItem(row, 0, new QTableWidgetItem(QString::fromStdString(workout->getDate())));
         historyTable->setItem(row, 2, new QTableWidgetItem(QString::number(workout->getDuration())));
         historyTable->setItem(row, 3, new QTableWidgetItem(QString::number(workout->getCaloriesBurned())));
 
-        // Check workout type and handle specific fields
+        // filling out workout specific fields
         if (auto* normal = dynamic_cast<NormalWorkout*>(workout.get())) {
             historyTable->setItem(row, 1, new QTableWidgetItem("Normal"));
             historyTable->setItem(row, 4, new QTableWidgetItem(QString::number(normal->getSets())));
@@ -76,14 +73,15 @@ void WorkoutHistoryGUI::populateTable() {
             historyTable->setItem(row, 5, new QTableWidgetItem("-"));
         }
 
-        row++;
+        row++; // go to next row
     }
 }
 
+
 void WorkoutHistoryGUI::handleRefresh() {
-    populateTable();
+    fillTable();
 }
 
 void WorkoutHistoryGUI::refreshHistory() {
-    populateTable();
+    fillTable(); // refresh function called
 }

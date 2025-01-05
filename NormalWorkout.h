@@ -1,7 +1,3 @@
-//
-// Created by adil_ on 11/12/2024.
-//
-
 #ifndef NORMALWORKOUT_H
 #define NORMALWORKOUT_H
 
@@ -18,7 +14,7 @@ public:
     // set up normal workout with date, duration, calories, type, sets, reps
     NormalWorkout(const string& date, int duration, int caloriesBurned, const string& exerciseType, int sets, int reps);
 
-    // show strength workout info
+    // show normal workout info
     void displayWorkout() const override;
 
     int getSets() const { return sets; }

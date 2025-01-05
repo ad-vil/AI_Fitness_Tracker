@@ -79,8 +79,8 @@ clean: CMakeFiles/FitnessTracker_autogen.dir/clean
 # Target rules for target CMakeFiles/FitnessTracker.dir
 
 # All Build rule for target.
-CMakeFiles/FitnessTracker.dir/all: CMakeFiles/FitnessTracker_autogen_timestamp_deps.dir/all
 CMakeFiles/FitnessTracker.dir/all: CMakeFiles/FitnessTracker_autogen.dir/all
+CMakeFiles/FitnessTracker.dir/all: CMakeFiles/FitnessTracker_autogen_timestamp_deps.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\FitnessTracker.dir\build.make CMakeFiles/FitnessTracker.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\FitnessTracker.dir\build.make CMakeFiles/FitnessTracker.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\adil_\CLionProjects\AI_Fitness_Tracker\cmake-build-debug\CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15 "Built target FitnessTracker"

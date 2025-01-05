@@ -1,7 +1,3 @@
-//
-// Created by adil_ on 1/4/2025.
-//
-
 #ifndef WORKOUTHISTORYGUI_H
 #define WORKOUTHISTORYGUI_H
 
@@ -19,12 +15,12 @@ public:
     void refreshHistory();
 
 private:
-    QTableWidget* historyTable;
-    QPushButton* refreshButton;
+    QTableWidget* historyTable; // table for history
+    QPushButton* refreshButton; // button for refresh
     WorkoutManager* workoutManager;
 
-    void setupUI();
-    void populateTable();
+    void setupUI(); // setting up UI
+    void fillTable(); // adding info to table
 
     private slots:
         void handleRefresh();

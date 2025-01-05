@@ -1,44 +1,41 @@
-//
-// Created by adil_ on 11/11/2024.
-//
-
 #include "AIEngine.h"
 
 std::vector<std::string> AIEngine::generateWorkoutPlan(const UserProfile& profile) {
     std::vector<std::string> plan;
     std::string goal = profile.getGoal();
 
+    // diff workouts for diff goals
     if (goal == "weight loss") {
         plan = {
-            "Day 1: 30 minutes cardio (running or cycling)",
-            "Day 2: Full body circuit training - 3 sets of 15 reps",
-            "Day 3: HIIT workout - 20 minutes",
-            "Day 4: Rest day with light stretching",
-            "Day 5: 45 minutes cardio + core exercises"
+            "day 1: 30min cardio (run/cycle)",
+            "day 2: full body circuit - 3x15",
+            "day 3: hiit - 20min",
+            "day 4: rest + stretching",
+            "day 5: 45min cardio + abs"
         };
     } else if (goal == "muscle gain") {
         plan = {
-            "Day 1: Chest and Triceps - 4 sets of 8-12 reps",
-            "Day 2: Back and Biceps - 4 sets of 8-12 reps",
-            "Day 3: Rest day",
-            "Day 4: Legs and Shoulders - 4 sets of 8-12 reps",
-            "Day 5: Core and Recovery exercises"
+            "day 1: chest/tri - 4x8-12",
+            "day 2: back/bi - 4x8-12",
+            "day 3: rest",
+            "day 4: legs/shoulders - 4x8-12",
+            "day 5: core + recovery"
         };
     } else if (goal == "endurance") {
         plan = {
-            "Day 1: Long distance running - 45 minutes",
-            "Day 2: Swimming or cycling - 30 minutes",
-            "Day 3: Light cardio and stretching",
-            "Day 4: Interval training - 30 minutes",
-            "Day 5: Endurance circuit training"
+            "day 1: long run - 45min",
+            "day 2: swim/cycle - 30min",
+            "day 3: light cardio + stretch",
+            "day 4: intervals - 30min",
+            "day 5: endurance circuit"
         };
-    } else {  // strength or default
+    } else {  // strength/default
         plan = {
-            "Day 1: Upper body strength - 5 sets of 5 reps",
-            "Day 2: Lower body strength - 5 sets of 5 reps",
-            "Day 3: Rest day",
-            "Day 4: Full body power exercises",
-            "Day 5: Core and compound lifts"
+            "day 1: upper strength - 5x5",
+            "day 2: lower strength - 5x5",
+            "day 3: rest",
+            "day 4: full body power",
+            "day 5: core + compounds"
         };
     }
 
@@ -49,22 +46,19 @@ std::string AIEngine::generateWorkoutAdvice(const UserProfile& profile, const st
     std::string advice;
     std::string goal = profile.getGoal();
 
+    // no workouts yet - give starter advice
     if (workoutHistory.empty()) {
-        advice = "Welcome! Start with lighter weights/intensity and focus on proper form. "
-                "Aim to workout 3-5 times per week consistently.";
+        advice = "welcome! start light and focus on form. try to workout 3-5x per week";
     } else {
+        // specific advice based on goals
         if (goal == "weight loss") {
-            advice = "Try to maintain a caloric deficit and combine cardio with strength training. "
-                    "Keep your heart rate elevated during workouts.";
+            advice = "keep a caloric deficit and mix cardio w/ strength. keep hr up during workouts";
         } else if (goal == "muscle gain") {
-            advice = "Focus on progressive overload and ensure adequate protein intake. "
-                    "Don't forget to get enough rest between workouts.";
+            advice = "focus on progressive overload and eat enough protein. dont forget rest days";
         } else if (goal == "endurance") {
-            advice = "Gradually increase your workout duration. Stay hydrated and maintain "
-                    "a steady pace during cardio sessions.";
+            advice = "slowly increase workout time. stay hydrated and keep steady pace";
         } else {
-            advice = "Focus on compound movements and proper form. Ensure adequate rest "
-                    "between sets for maximum strength gains.";
+            advice = "focus on compound lifts and good form. rest well between sets";
         }
     }
 
@@ -76,7 +70,7 @@ double AIEngine::calculateProgressScore(const std::vector<Workout*>& workoutHist
         return 0.0;
     }
 
-    // Simple scoring: 0.0 to 1.0 based on number of workouts
-    // More workouts = higher score, max out at 10 workouts
+    // basic score calc - more workouts = better score
+    // caps at 10 workouts for max score
     return std::min(1.0, workoutHistory.size() / 10.0);
 }

@@ -54,7 +54,7 @@ The **AI Powered Fitness Tracker** is a C++ application aimed at helping people 
 ### Steps
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/your-username/AI_Fitness_Tracker.git
+   git clone https://github.com/ad-vil/AI_Fitness_Tracker.git
    cd AI_Fitness_Tracker
 2. **Install Dependencies**:
    Follow the setup instructions for installing and linking **Qt**, **SFML**, **ImGui**, and **cURL**.

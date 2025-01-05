@@ -1,6 +1,3 @@
-//
-// Created by adil_ on 11/11/2024.
-//
 #ifndef WORKOUT_H
 #define WORKOUT_H
 
@@ -17,7 +14,7 @@ protected:
     int caloriesBurned;
 
 public:
-    // constructor to set up date, duration, and calories
+    // ctor
     Workout(const string& date, int duration, int caloriesBurned);
 
     // virtual method for displaying the workout, to be defined by derived classes
@@ -26,6 +23,7 @@ public:
     // destructor
     virtual ~Workout() {}
 
+    // getters
     int getDuration() const { return duration; }
 
     virtual std::string getDate() const { return date; }

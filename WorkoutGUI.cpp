@@ -1,41 +1,38 @@
-//
-// Created by adil_ on 12/22/2024.
-//
-
 #include "WorkoutGUI.h"
 #include <QMessageBox>
 
+// ctor
 WorkoutGUI::WorkoutGUI(QWidget *parent) : QDialog(parent) {
     setupUI();
 }
 
 void WorkoutGUI::setupUI() {
-    // Workout type selection
+    // select workout type via dropdown
     workoutTypeDropdown = new QComboBox(this);
     workoutTypeDropdown->addItem("Normal Workout");
     workoutTypeDropdown->addItem("Cardio Workout");
 
-    // Common inputs
+    // common inputs for workout types
     durationInput = new QLineEdit(this);
     durationInput->setPlaceholderText("Duration (minutes)");
     caloriesInput = new QLineEdit(this);
     caloriesInput->setPlaceholderText("Calories burned");
 
-    // Normal workout inputs
+    // normal specific inputs
     setsInput = new QLineEdit(this);
     setsInput->setPlaceholderText("Number of sets");
     repsInput = new QLineEdit(this);
     repsInput->setPlaceholderText("Number of reps");
 
-    // Cardio workout inputs
+    // cardio specific inputs
     distanceInput = new QLineEdit(this);
     distanceInput->setPlaceholderText("Distance (km)");
 
-    // Submit button and feedback
+    // submit and feedback
     submitButton = new QPushButton("Log Workout", this);
     feedbackLabel = new QLabel(this);
 
-    // Layout
+    // put everything into layout
     mainLayout = new QVBoxLayout(this);
     mainLayout->addWidget(new QLabel("Workout Type:"));
     mainLayout->addWidget(workoutTypeDropdown);
@@ -52,10 +49,11 @@ void WorkoutGUI::setupUI() {
     mainLayout->addWidget(submitButton);
     mainLayout->addWidget(feedbackLabel);
 
-    // Connect signals
+    // connect signals
     connect(workoutTypeDropdown, &QComboBox::currentTextChanged,
             this, &WorkoutGUI::handleWorkoutTypeChange);
     connect(submitButton, &QPushButton::clicked, [this]() {
+        // logging either normal or cardio workout
         if (workoutTypeDropdown->currentText() == "Normal Workout") {
             logNormalWorkout();
         } else {
@@ -66,6 +64,7 @@ void WorkoutGUI::setupUI() {
     handleWorkoutTypeChange(workoutTypeDropdown->currentText());
 }
 
+// slot hanfles change in workout type
 void WorkoutGUI::handleWorkoutTypeChange(const QString &type) {
     if (type == "Normal Workout") {
         setsInput->show();
@@ -78,6 +77,8 @@ void WorkoutGUI::handleWorkoutTypeChange(const QString &type) {
     }
 }
 
+// validate input before logging workout
+// if nto all fields are filled dont let the user proceed
 bool WorkoutGUI::validateInputs() {
     if (durationInput->text().isEmpty() || caloriesInput->text().isEmpty()) {
         QMessageBox::warning(this, "Input Error", "Please fill in duration and calories burned.");
@@ -86,12 +87,14 @@ bool WorkoutGUI::validateInputs() {
     return true;
 }
 
+// logging normal workout
 void WorkoutGUI::logNormalWorkout() {
     if (!validateInputs() || setsInput->text().isEmpty() || repsInput->text().isEmpty()) {
         QMessageBox::warning(this, "Input Error", "Please fill in all fields.");
         return;
     }
 
+    // uses map o collect workout data
     QMap<QString, QString> workoutData;
     workoutData["date"] = QDateTime::currentDateTime().toString("yyyy-MM-dd");
     workoutData["duration"] = durationInput->text();
@@ -99,16 +102,20 @@ void WorkoutGUI::logNormalWorkout() {
     workoutData["sets"] = setsInput->text();
     workoutData["reps"] = repsInput->text();
 
+    // emit signal w data and close dialog
     emit workoutLogged("normal", workoutData);
     accept();
 }
 
+// logging cardio
 void WorkoutGUI::logCardioWorkout() {
     if (!validateInputs() || distanceInput->text().isEmpty()) {
         QMessageBox::warning(this, "Input Error", "Please fill in all fields.");
         return;
     }
 
+
+    // map to collect, emit, and close
     QMap<QString, QString> workoutData;
     workoutData["date"] = QDateTime::currentDateTime().toString("yyyy-MM-dd");
     workoutData["duration"] = durationInput->text();
@@ -119,4 +126,5 @@ void WorkoutGUI::logCardioWorkout() {
     accept();
 }
 
+// destructor
 WorkoutGUI::~WorkoutGUI() = default;

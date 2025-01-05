@@ -1,35 +1,32 @@
-//
-// Created by adil_ on 1/3/2025.
-//
-
 #include "AIRecommendationsGUI.h"
 #include <QScrollArea>
 
+// ctor for gui
 AIRecommendationsGUI::AIRecommendationsGUI(QWidget *parent) : QWidget(parent) {
     auto* layout = new QVBoxLayout(this);
 
-    // Create title
+    // title
     auto* titleLabel = new QLabel("AI Workout Recommendations", this);
     titleLabel->setStyleSheet("font-size: 16px; font-weight: bold;");
     layout->addWidget(titleLabel);
 
-    // Create workout plan list
+    // TODO: add filters maybe? would be nice to sort by difficulty/type
     workoutPlanList = new QListWidget(this);
-    workoutPlanList->setMinimumHeight(200);
+    workoutPlanList->setMinimumHeight(200); // make dynamic if time
     layout->addWidget(workoutPlanList);
 
-    // Create advice section
+    // where ai gives advice - needs work
     adviceLabel = new QLabel(this);
     adviceLabel->setWordWrap(true);
-    adviceLabel->setStyleSheet("background-color: #f0f0f0; padding: 10px; border-radius: 5px;");
+    adviceLabel->setStyleSheet("background: #f0f0f0; padding: 10px; border-radius: 5px;");
     layout->addWidget(adviceLabel);
 
-    // Create progress section
+    // progress tracking - super buggy rn
     progressLabel = new QLabel(this);
     progressLabel->setWordWrap(true);
     layout->addWidget(progressLabel);
 
-    // Create generate button
+    // button to get new stuff from ai
     generateButton = new QPushButton("Generate New Recommendations", this);
     layout->addWidget(generateButton);
 
@@ -38,56 +35,58 @@ AIRecommendationsGUI::AIRecommendationsGUI(QWidget *parent) : QWidget(parent) {
 
     setLayout(layout);
 
+    // styling
     workoutPlanList->setStyleSheet(
-        "QListWidget { background-color: #2b2b2b; color: white; padding: 10px; "
+        "QListWidget { background: #2b2b2b; color: white; padding: 10px; "
         "border-radius: 5px; }"
     );
 
     adviceLabel->setStyleSheet(
-        "QLabel { background-color: #2b2b2b; color: white; padding: 10px; "
+        "QLabel { background: #2b2b2b; color: white; padding: 10px; "
         "border-radius: 5px; margin: 10px; }"
     );
 
     progressLabel->setStyleSheet(
-        "QLabel { background-color: #2b2b2b; color: white; padding: 10px; "
+        "QLabel { background: #2b2b2b; color: white; padding: 10px; "
         "border-radius: 5px; }"
     );
 
+    // button styling
     generateButton->setStyleSheet(
-        "QPushButton { background-color: #4CAF50; color: white; padding: 8px; "
+        "QPushButton { background: #4CAF50; color: white; padding: 8px; "
         "border-radius: 4px; }"
-        "QPushButton:hover { background-color: #45a049; }"
+        "QPushButton:hover { background: #45a049; }"
     );
 }
 
+// updates ai info based on profile
 void AIRecommendationsGUI::updateRecommendations(UserProfile* profile) {
     if (!profile) {
-        adviceLabel->setText("Please create a user profile first.");
+        adviceLabel->setText("Make a profile first!");
         return;
     }
 
-    // Generate workout plan
+    // generate workout ideas
     std::vector<std::string> workoutPlan = aiEngine.generateWorkoutPlan(*profile);
     displayWorkoutPlan(workoutPlan);
 
-    // Generate advice
-    std::vector<Workout*> workoutHistory;  // This should be populated from your workout history
+    std::vector<Workout*> workoutHistory;
     std::string advice = aiEngine.generateWorkoutAdvice(*profile, workoutHistory);
     adviceLabel->setText(QString::fromStdString("AI Advice:\n" + advice));
 
-    // Calculate and display progress
+    // progress calc - doesn't really work rn but my code breaks if i remove it so ig its staying
     double progressScore = aiEngine.calculateProgressScore(workoutHistory);
-    progressLabel->setText(QString("Current Progress Score: %1%")
+    progressLabel->setText(QString("Progress: %1%")
                          .arg(progressScore * 100, 0, 'f', 1));
 }
 
 void AIRecommendationsGUI::handleGenerateRecommendations() {
-    // This should be connected to your current user profile
-    // For now, we'll create a sample profile
-    UserProfile sampleProfile("User", 25, 70.0, 175.0, "muscle gain", "male");
+    // temporary test profile
+    UserProfile sampleProfile("", 25, 70.0, 175.0, "muscle gain", "male");
     updateRecommendations(&sampleProfile);
 }
 
+// display workout plan on gui
 void AIRecommendationsGUI::displayWorkoutPlan(const std::vector<std::string>& plan) {
     workoutPlanList->clear();
     for (const auto& item : plan) {

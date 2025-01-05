@@ -1,7 +1,3 @@
-//
-// Created by adil_ on 11/12/2024.
-//
-
 #include "NormalWorkout.h"
 
 // initialize normal workout attributes

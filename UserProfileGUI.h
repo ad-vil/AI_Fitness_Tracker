@@ -1,7 +1,3 @@
-//
-// Created by adil_ on 12/23/2024.
-//
-
 #ifndef USERPROFILEGUI_H
 #define USERPROFILEGUI_H
 
@@ -19,7 +15,7 @@ class UserProfileGUI : public QWidget {
     Q_OBJECT
 
 signals:
-    void profileUpdated(); // New signal
+    void profileUpdated(); // update profile signal
 
 private:
     QLineEdit* nameInput;
@@ -35,12 +31,13 @@ private:
     UserProfile* userProfile;
 
 public:
+    // prevent implicit conversions in ctor
     explicit UserProfileGUI(QWidget* parent = nullptr);
     UserProfile* getCurrentProfile() const { return userProfile; }
 
     private slots:
         void handleUpdateProfile();
-    void refreshProfileDisplay();
+        void refreshProfileDisplay();
 };
 
 #endif

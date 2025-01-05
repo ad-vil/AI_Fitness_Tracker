@@ -1,27 +1,20 @@
-//
-// Created by adil_ on 12/23/2024.
-//
-
-// UserProfileGUI.cpp
-
 #include "UserProfileGUI.h"
 #include <QGroupBox>
 #include <QFormLayout>
 
+// ctor
 UserProfileGUI::UserProfileGUI(QWidget* parent) : QWidget(parent), userProfile(nullptr) {
-    // Create main layout
     mainLayout = new QVBoxLayout(this);
 
-    // Create form layout for inputs
+    // form for user info
     auto* formLayout = new QFormLayout();
 
-    // Create input widgets
     nameInput = new QLineEdit(this);
-    nameInput->setPlaceholderText("Enter your name");
+    nameInput->setPlaceholderText("Your name");
 
     ageInput = new QSpinBox(this);
-    ageInput->setRange(13, 100);
-    ageInput->setValue(25);
+    ageInput->setRange(10, 100);
+    ageInput->setValue(25); // default value
 
     weightInput = new QDoubleSpinBox(this);
     weightInput->setRange(40, 200);
@@ -41,7 +34,7 @@ UserProfileGUI::UserProfileGUI(QWidget* parent) : QWidget(parent), userProfile(n
     genderInput = new QComboBox(this);
     genderInput->addItems({"male", "female", "other"});
 
-    // Add widgets to form layout
+    // insert everything into the form
     formLayout->addRow("Name:", nameInput);
     formLayout->addRow("Age:", ageInput);
     formLayout->addRow("Weight:", weightInput);
@@ -49,34 +42,32 @@ UserProfileGUI::UserProfileGUI(QWidget* parent) : QWidget(parent), userProfile(n
     formLayout->addRow("Goal:", goalInput);
     formLayout->addRow("Gender:", genderInput);
 
-    // Create group box for form
-    auto* groupBox = new QGroupBox("Profile Information", this);
+    auto* groupBox = new QGroupBox("Profile Info", this);
     groupBox->setLayout(formLayout);
     mainLayout->addWidget(groupBox);
 
-    // Create profile display
+    // display area for profile
     profileDisplay = new QLabel(this);
     profileDisplay->setStyleSheet(
-        "QLabel { background-color: #2b2b2b; color: white; padding: 10px; "
+        "QLabel { background: #2b2b2b; color: white; padding: 10px; "
         "border-radius: 5px; margin: 10px; }"
     );
-    profileDisplay->setMinimumHeight(150);  // Ensure enough space for all info
+    profileDisplay->setMinimumHeight(150);
     mainLayout->addWidget(profileDisplay);
 
-    // Create update button
+    // update button
     updateProfileButton = new QPushButton("Update Profile", this);
     updateProfileButton->setStyleSheet(
-        "QPushButton { background-color: #4CAF50; color: white; padding: 8px; "
+        "QPushButton { background: #4CAF50; color: white; padding: 8px; "
         "border-radius: 4px; }"
-        "QPushButton:hover { background-color: #45a049; }"
+        "QPushButton:hover { background: #45a049; }"
     );
     mainLayout->addWidget(updateProfileButton);
 
-    // Set main layout
     setLayout(mainLayout);
 
-    // Connect signals
-    connect(updateProfileButton, &QPushButton::clicked, this, &UserProfileGUI::handleUpdateProfile);
+    connect(updateProfileButton, &QPushButton::clicked,
+            this, &UserProfileGUI::handleUpdateProfile);
 }
 
 void UserProfileGUI::handleUpdateProfile() {
@@ -84,7 +75,7 @@ void UserProfileGUI::handleUpdateProfile() {
         userProfile = new UserProfile();
     }
 
-    // Update all profile fields
+    // update everything
     userProfile->setName(nameInput->text().toStdString());
     userProfile->setAge(ageInput->value());
     userProfile->setWeight(weightInput->value());
@@ -96,9 +87,9 @@ void UserProfileGUI::handleUpdateProfile() {
     emit profileUpdated();
 }
 
+// refreshes user profile info
 void UserProfileGUI::refreshProfileDisplay() {
     if (!userProfile) return;
-
     QString profileInfo = QString::fromStdString(userProfile->getProfileInfo());
     profileDisplay->setText(profileInfo);
 }

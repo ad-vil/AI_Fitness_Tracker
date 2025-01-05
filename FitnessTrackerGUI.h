@@ -1,7 +1,3 @@
-//
-// Created by adil_ on 12/22/2024.
-//
-
 #ifndef FITNESS_TRACKER_GUI_H
 #define FITNESS_TRACKER_GUI_H
 
@@ -15,26 +11,27 @@
 #include "AIRecommendationsGUI.h"
 #include "UserProfileGUI.h"
 #include "WorkoutManager.h"
-#include "WorkoutHistoryGUI.h"  // Add this include
+#include "WorkoutHistoryGUI.h"
 
+// main GUI for fitness tracker
 class FitnessTrackerGUI : public QWidget {
     Q_OBJECT
 
 public:
-    explicit FitnessTrackerGUI(QWidget *parent = nullptr);
+    explicit FitnessTrackerGUI(QWidget *parent = nullptr); // ctor
 
     private slots:
-        void logWorkout();
-    void onProfileUpdated();
-    void onWorkoutLogged(const QString& type, const QMap<QString, QString>& data);
+        void logWorkout(); // handle log workout
+    void onProfileUpdated(); // handle profile update
+    void onWorkoutLogged(const QString& type, const QMap<QString, QString>& data); // handle logged workout
 
 private:
-    QTabWidget *tabWidget;
-    UserProfileGUI *profileGui;
-    QPushButton *logWorkoutButton;
-    AIRecommendationsGUI *aiTab;
-    WorkoutManager workoutManager;
-    WorkoutHistoryGUI *historyTab;  // Add this member
+    QTabWidget *tabWidget; // tab widget for sections
+    UserProfileGUI *profileGui; // profile GUI
+    QPushButton *logWorkoutButton; // log workout button
+    AIRecommendationsGUI *aiTab; // AI recommendations tab
+    WorkoutManager workoutManager; // manages workouts
+    WorkoutHistoryGUI *historyTab; // workout history tab
 };
 
 #endif // FITNESS_TRACKER_GUI_H

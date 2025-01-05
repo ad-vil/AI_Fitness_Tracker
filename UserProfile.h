@@ -1,7 +1,3 @@
-//
-// Created by adil_ on 11/11/2024.
-//
-
 #ifndef USERPROFILE_H
 #define USERPROFILE_H
 
@@ -9,6 +5,7 @@
 
 class UserProfile {
 private:
+    // userprofile info
     std::string name;
     int age;
     double weight;
@@ -20,7 +17,7 @@ public:
     UserProfile(const std::string& name = "", int age = 0, double weight = 0.0, double height = 0.0,
                 const std::string& goal = "", const std::string& gender = "");
 
-    // Getters
+    // getters
     std::string getName() const;
     int getAge() const;
     double getWeight() const;
@@ -28,7 +25,7 @@ public:
     std::string getGoal() const;
     std::string getGender() const;
 
-    // Setters
+    // setters
     void setName(const std::string& newName);
     void setAge(int newAge);
     void setWeight(double newWeight);
