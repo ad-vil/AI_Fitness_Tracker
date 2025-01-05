@@ -9,9 +9,7 @@
 - [Installation](#installation)
 - [Usage](#usage)
 - [Class Design](#class-design)
-- [Project Schedule](#project-schedule)
 - [Contributing](#contributing)
-- [License](#license)
 
 ---
 
@@ -27,7 +25,6 @@ The **AI Powered Fitness Tracker** is a C++ application aimed at helping people 
 - **Workout Logging**: Users can log details of both strength and cardio workouts.
 - **Progress Tracking**: Visualize workout progress with charts and statistics.
 - **AI-Powered Suggestions**: Personalized workout recommendations based on user data.
-- **API Integration**: Fetches additional data from external APIs to enhance recommendations.
 - **User-Friendly Interface**: An intuitive GUI makes navigation and tracking seamless.
 
 ---
@@ -36,11 +33,7 @@ The **AI Powered Fitness Tracker** is a C++ application aimed at helping people 
 
 - **Programming Language**: C++
 - **GUI Framework**: Qt
-- **Database**: MySQL (for data storage)
-- **External Libraries**:
-  - SFML for creating charts and graphs
-  - ImGui for simple GUI layouts
-  - cURL for API requests
+- **Database**: Memory
 
 ---
 
@@ -57,13 +50,10 @@ The **AI Powered Fitness Tracker** is a C++ application aimed at helping people 
    git clone https://github.com/ad-vil/AI_Fitness_Tracker.git
    cd AI_Fitness_Tracker
 2. **Install Dependencies**:
-   Follow the setup instructions for installing and linking **Qt**, **SFML**, **ImGui**, and **cURL**.
+   Follow the setup instructions for installing and linking **Qt**.
 
 3. **Build the Project**:
    Open the project in CLion and build it using the IDE’s build system.
-
-4. **Set Up Database**:
-   Configure MySQL and run the setup scripts included to initialize the database.
 
 ---
 
@@ -109,19 +99,8 @@ The project follows object-oriented principles to keep the code organized, maint
 5. **APIClient**:
    - Handles communication with external APIs to fetch health data, adding value to the AIEngine’s recommendations.
 
-6. **GUI**:
+6. **GUI (Various classes)**:
    - Manages the graphical user interface, allowing users to interact with and navigate the application.
-
----
-
-## Project Schedule
-
-- **Milestone 1**: Project Proposal - Completed on 9/25/2024
-- **Milestone 2**: Workout Logging and Progress Tracking - Completed on 10/9/2024
-- **Milestone 3**: API Integration and AI-Powered Suggestions - Completed on 10/23/2024
-- **Milestone 4**: GUI Implementation - Completed on 11/6/2024
-- **Milestone 5**: Final Testing and Debugging - Scheduled for 11/13/2024
-- **Release**: Final release scheduled for 11/20/2024
 
 ---
 
@@ -135,7 +114,3 @@ Contributions are welcome! Please follow these steps:
 5. Open a pull request.
 
 ---
-
-## License
-
-This project is licensed under the MIT License. See the `LICENSE` file for details.
